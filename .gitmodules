@@ -1,3 +1,6 @@
 [submodule "main-scene"]
 	path = main-scene
 	url = https://github.com/math-pixel/kinect-unity-see-through-display.git
+[submodule "Window-to-the-world"]
+	path = Window-to-the-world
+	url = https://github.com/math-pixel/kinect-unity-see-through-display.git
