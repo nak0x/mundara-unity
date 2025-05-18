@@ -1,0 +1,53 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# =============== #
+# Unity Cache     #
+# =============== #
+sysinfo.txt
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.unityproj
+*.booproj
+
+# =============== #
+# OS generated    #
+# =============== #
+.DS_Store
+Thumbs.db
+
+# =============== #
+# VSCode          #
+# =============== #
+.vscode/
+
+# =============== #
+# Rider           #
+# =============== #
+.idea/
+*.sln
+*.csproj
+*.unityproj
+
+# =============== #
+# Unity Cloud     #
+# =============== #
+.vsconfig
+
+# =============== #
+# Auto-generated  #
+# =============== #
+Generated*/ 
+*.apk
+*.aab
+
