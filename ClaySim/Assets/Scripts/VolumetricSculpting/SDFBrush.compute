@@ -1,0 +1,37 @@
+// This script creates a 3D Signed Distance Field (SDF) texture using a compute shader.
+#pragma kernel CSInit
+#pragma kernel CSAddSphere
+
+RWTexture3D<float> Result;
+
+[numthreads(8,8,8)]
+void CSInit(uint3 id : SV_DispatchThreadID)
+{
+    Result[id] = 1.0; // default: far away (positive)
+}
+
+float sdf_sphere(float3 p, float3 center, float radius)
+{
+    return length(p - center) - radius;
+}
+
+float3 normalizeCoord(uint3 id, uint3 size)
+{
+    return (id + 0.5) / size;
+}
+
+[numthreads(8,8,8)]
+void CSAddSphere(uint3 id : SV_DispatchThreadID)
+{
+    uint3 size;
+    Result.GetDimensions(size.x, size.y, size.z);
+
+    float3 uv = normalizeCoord(id, size);
+    float d = sdf_sphere(uv, sphereCenter, sphereRadius);
+    
+    float existing = Result[id];
+    Result[id] = min(existing, d); // union op
+}
+
+float3 sphereCenter;
+float sphereRadius;

@@ -1,14 +1,22 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 [RequireComponent(typeof(MeshFilter), typeof(Collider))]
 public class SimpleMeshDeformer : MonoBehaviour
 {
+    [Header("Required Components")]
+    public MeshFilter meshFilter;
+    public MeshCollider meshCollider;
+
     [Header("Deformation Settings")]
     public float deformationRadius = 0.5f;
     public float deformationStrength = 0.1f;
     public bool debug = true;
     public float colliderUpdateDelay = 0.2f;
+    
+    [Header("Deformation Constraints")]
+    public float maxDeformation = 0.2f;
 
     [Header("Smooth Falloff Settings")]
     public float curveSharpness = -1f;
@@ -26,18 +34,12 @@ public class SimpleMeshDeformer : MonoBehaviour
 
     void Start()
     {
-        if (debug) {
-            Debug.Log("SimpleMeshDeformer started on: " + gameObject.name);
-        }
-        if (GetComponent<MeshFilter>() == null) {
-            Debug.LogError("SimpleMeshDeformer requires a MeshFilter component.");
-        }
-        deformingMesh = GetComponent<MeshFilter>().mesh;
+        deformingMesh = meshFilter.mesh;
         deformingMesh = Instantiate(deformingMesh); // Make mesh editable
-        GetComponent<MeshFilter>().mesh = deformingMesh;
+        meshFilter.mesh = deformingMesh;
 
         originalVertices = deformingMesh.vertices;
-        modifiedVertices = deformingMesh.vertices;
+        modifiedVertices = (Vector3[])originalVertices.Clone();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -48,11 +50,12 @@ public class SimpleMeshDeformer : MonoBehaviour
         foreach (ContactPoint contact in collision.contacts)
         {
             if (debug) {
-                Debug.DrawRay(contact.point, contact.normal, Color.red, 2f);
+                Debug.DrawRay(contact.point, contact.normal, Color.red, 4f);
             }
             ApplyDeformation(contact.point, contact.normal, collision.relativeVelocity);
         }
 
+        // Update the mesh with the modified vertices
         deformingMesh.vertices = modifiedVertices;
         deformingMesh.RecalculateNormals();
         deformingMesh.RecalculateBounds();
@@ -62,11 +65,10 @@ public class SimpleMeshDeformer : MonoBehaviour
         pendingColliderUpdate = true;
 
         // Update the collider 
-        MeshCollider col = GetComponent<MeshCollider>();
-        if (col != null)
+        if (meshCollider != null)
         {
-            col.sharedMesh = null;
-            col.sharedMesh = deformingMesh;
+            meshCollider.sharedMesh = null;
+            meshCollider.sharedMesh = deformingMesh;
         }
 
     }
@@ -75,39 +77,39 @@ public class SimpleMeshDeformer : MonoBehaviour
     {
         if (pendingColliderUpdate && Time.time - lastDeformTime > colliderUpdateDelay)
         {
-            MeshCollider col = GetComponent<MeshCollider>();
-            if (col != null)
+            if (meshCollider != null)
             {
-                col.sharedMesh = null;
-                col.sharedMesh = deformingMesh;
+                // Force update mesh
+                meshCollider.sharedMesh = null;
+                meshCollider.sharedMesh = deformingMesh;
             }
 
             pendingColliderUpdate = false;
         }
     }
 
-
-
     void ApplyDeformation(Vector3 worldPoint, Vector3 normal, Vector3 velocity)
     {
-        Vector3 localPoint = transform.InverseTransformPoint(worldPoint);
-        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        Vector3 meshCenter = Vector3.zero;
+        foreach (var v in modifiedVertices)
+            meshCenter += v;
+
+        // Compute mesh centroid
+        meshCenter /= modifiedVertices.Length;
+
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity).normalized;
         if (debug) {
-            Debug.DrawRay(worldPoint, velocity.normalized * 0.5f, Color.cyan, 1f);
+            Debug.DrawRay(worldPoint, localVelocity * 0.5f, Color.cyan, 1f);
             Debug.DrawRay(worldPoint, normal * 0.5f, Color.yellow, 1f);
         }
 
         for (int i = 0; i < modifiedVertices.Length; i++)
         {
             Vector3 vertex = modifiedVertices[i];
-            float distance = Vector3.Distance(vertex, localPoint);
+            float distance = Vector3.Distance(vertex, worldPoint);
 
             if (distance < deformationRadius)
             {
-
-                if (distance > deformationRadius)
-                    continue;
-
                 float falloff = SmoothClampedParabola.Evaluate(
                     distance,
                     curveSharpness,
@@ -117,9 +119,33 @@ public class SimpleMeshDeformer : MonoBehaviour
                     intensityScale
                 );
 
-                modifiedVertices[i] += localVelocity.normalized * deformationStrength * falloff;
+                // Normal displacement
+                Vector3 push = localVelocity * deformationStrength * falloff;
+
+                // Add mirrored defromation
+                Vector3 toCenter = (vertex - meshCenter).normalized;
+                Vector3 antiPush = toCenter * deformationStrength * 0.5f * falloff;
+
+                Vector3 final = vertex + push + antiPush;
+
+                // Clamp deformation to prevent over-stretching
+                float maxDisplacement = maxDeformation;
+                float delta = (final - originalVertices[i]).magnitude;
+
+                if (delta > maxDisplacement)
+                {
+                    final = originalVertices[i] + (final - originalVertices[i]).normalized * maxDisplacement;
+                }
+
+                modifiedVertices[i] = final;
+                if (debug) {
+                    Debug.DrawRay(vertex, final - vertex, Color.green, 1f);
+                }
+
             }
-        }
+            
+        }   
+
     }
 
 
