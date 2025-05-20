@@ -17,12 +17,13 @@ public class stepManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        idObject = 0;
         gameObject.transform.position = sceneOfObject.gameObject.transform.position; 
         if (listObjects[idObject] != null)
         {
             currentObject = Instantiate(listObjects[0], gameObject.transform.position, Quaternion.identity);
             currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
-            progressBar.updateState(idObject);
+            progressBar.updateState(0);
         }
     }
 

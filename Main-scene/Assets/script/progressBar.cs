@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class progressBar : MonoBehaviour
 {
@@ -7,6 +9,9 @@ public class progressBar : MonoBehaviour
     [SerializeField]
     public TMP_Text temporaryText;
 
+    public Image imageHolder;
+    public List<Sprite> stepSprites;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +26,6 @@ public class progressBar : MonoBehaviour
 
     public void updateState(int step)
     {
-        temporaryText.text = step.ToString();
+        imageHolder.sprite = stepSprites[step];
     }
 }
