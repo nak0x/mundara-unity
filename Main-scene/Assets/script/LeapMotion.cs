@@ -1,12 +1,17 @@
 using UnityEngine;
 using Leap;
 using System.Collections.Generic;
+using System.Collections;
 
 public class LeapMotion : MonoBehaviour
 {
     Controller controller;
     public float minSwipeDistance = 0.2f; // in meters
     public float maxSwipeDuration = 1.0f; // in seconds
+
+    public stepManager stepManager;
+
+    public bool canSwipe;
 
     private class SwipeTracker
     {
@@ -18,6 +23,8 @@ public class LeapMotion : MonoBehaviour
 
     void Start()
     {
+        canSwipe = true;
+        Debug.Log("start leap");
         controller = new Controller();
     }
 
@@ -52,12 +59,24 @@ public class LeapMotion : MonoBehaviour
 
                 if (elapsed <= maxSwipeDuration && Mathf.Abs(distance) >= minSwipeDistance)
                 {
-                    if (distance > 0)
-                        OnSwipeRight(hand);
-                    else
-                        OnSwipeLeft(hand);
+                    if (canSwipe == true)
+                    {
+                        Debug.Log("Swiping !!!");
+                        canSwipe = false;
+                        if (distance > 0)
+                            OnSwipeRight(hand);
+                        else
+                            OnSwipeLeft(hand);
 
-                    activeSwipes.Remove(id); // prevent re-trigger
+                        activeSwipes.Remove(id); // prevent re-trigger
+                        StartCoroutine(DelaySwipe(3f));
+                    }
+                    else
+                    {
+                        Debug.Log("Cant swipe cause : delay interval");
+                    }
+
+                    
                 }
                 else if (elapsed > maxSwipeDuration)
                 {
@@ -66,6 +85,14 @@ public class LeapMotion : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator DelaySwipe(float interval)
+    { 
+        yield return new WaitForSeconds(interval);
+        canSwipe = true;
+        //Debug.Log("Tick at: " + Time.time);
+
     }
 
     bool IsHandOpen(Hand hand)
@@ -81,11 +108,13 @@ public class LeapMotion : MonoBehaviour
     {
         Debug.Log($"Swipe Right with {(hand.IsLeft ? "Left" : "Right")} hand.");
         // Your logic here
+        stepManager.updateStep(STEPDIRECTION.Backward);
     }
 
     void OnSwipeLeft(Hand hand)
     {
         Debug.Log($"Swipe Left with {(hand.IsLeft ? "Left" : "Right")} hand.");
         // Your logic here
+        stepManager.updateStep(STEPDIRECTION.Forward);
     }
 }

@@ -3,28 +3,33 @@ using System.IO;
 using UnityEditor.Rendering;
 using UnityEngine;
 
+
+public enum STEPDIRECTION
+{
+    Forward,
+    Backward,
+    Nothing
+}
+
 public class stepManager : MonoBehaviour
 {
     
     public GameObject sceneOfObject;
     public Narateur narateur;
-    public List<GameObject> listObjects;
+    public List<GameObject> stepObjects;
     private GameObject currentObject;
-    private int idObject = 0;
+    private int currentGameStep = 0;
 
     public progressBar progressBar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        idObject = 0;
+        // start step
+        currentGameStep = 0;
         gameObject.transform.position = sceneOfObject.gameObject.transform.position; 
-        if (listObjects[idObject] != null)
-        {
-            currentObject = Instantiate(listObjects[0], gameObject.transform.position, Quaternion.identity);
-            currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
-            progressBar.updateState(0);
-        }
+
+        updateStep(STEPDIRECTION.Nothing);
     }
 
     // Update is called once per frame
@@ -33,17 +38,17 @@ public class stepManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             
-            if (idObject + 1 < listObjects.Count)
+            if (currentGameStep + 1 < stepObjects.Count)
             {
-                updateStep(1);
+                updateStep(STEPDIRECTION.Forward);
             }
         }
         
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (idObject - 1 >= 0)
+            if (currentGameStep - 1 >= 0)
             {
-                updateStep(0);
+                updateStep(STEPDIRECTION.Backward);
             }
         }
     }
@@ -57,14 +62,16 @@ public class stepManager : MonoBehaviour
         return validateState;
     }
 
-    private void updateStep(int direction)
+    public void updateStep(STEPDIRECTION direction)
     {
         // Set the direction of the next step
-        if (direction == 0) {
-            idObject--;
-        }else if (direction == 1)
+        if (direction == STEPDIRECTION.Backward) {
+            currentGameStep--;
+        }else if (direction == STEPDIRECTION.Forward)
         {
-            idObject++;
+            currentGameStep++;
+        }else if(direction == STEPDIRECTION.Nothing){
+
         }
         else
         {
@@ -76,16 +83,38 @@ public class stepManager : MonoBehaviour
         {
             Destroy(currentObject);
         }
-        currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
-        currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
-        progressBar.updateState(idObject);
+
+        if (stepObjects[currentGameStep] != null)
+        {
+            currentObject = Instantiate(stepObjects[currentGameStep], gameObject.transform.position, Quaternion.identity);
+            currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+
+        }
+        
+        // Update the progress bar
+        progressBar.updateState(currentGameStep);
 
 
         // Do other action in function of the step
-        switch (idObject)
+        switch (currentGameStep)
         {
+            case 0:
+                narateur.say("La modélisation du petit pot commence par la réalisation d’une boule de terre bien homogène. Cette première étape est essentielle pour assurer une base régulière et malléable.");
+                break;
             case 1:
-                narateur.say("Hello World");
+                narateur.say("Tracer une ligne au centre de la boule permettait non seulement de mieux tenir les pots pendant la fabrication, mais aussi de faciliter leur suspension ou leur transport une fois terminés.");
+                break;
+            case 2:
+                narateur.say("À cette étape, on détermine le volume que le pot devra contenir. Cela implique de creuser et d’élargir l’intérieur de manière régulière pour assurer à la fois la capacité et la stabilité.");
+                break;
+            case 3:
+                narateur.say("Pour faciliter le service des liquides, il était courant de façonner un petit bec verseur. Ce détail rendait le pot plus fonctionnel tout en lui donnant une touche esthétique.");
+                break;
+            case 4:
+                narateur.say("En aplatissant soigneusement le fond du pot, on lui assurait une bonne stabilité une fois posé. Cette étape est cruciale pour que le pot tienne debout de manière sûre et durable.");
+                break;
+            case 5:
+                narateur.say("");
                 break;
 
         }
