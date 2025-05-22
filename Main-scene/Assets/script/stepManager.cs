@@ -90,11 +90,11 @@ public class StepManager : MonoBehaviour
     {
         
         // display presentation pannel
-        if (StepScreenPresentations[_currentGameStep] != null)
-        {
-            ScreenPresentation currentData = StepScreenPresentations[_currentGameStep][0];
-            presentationStepPanel.ShowPanel(currentData.title, currentData.description);
-        }
+        // if (StepScreenPresentations[_currentGameStep] != null)
+        // {
+        //     ScreenPresentation currentData = StepScreenPresentations[_currentGameStep][0];
+        //     presentationStepPanel.ShowPanel(currentData.title, currentData.description);
+        // }
         
         // Display the next Object
         if (_currentObject != null)
