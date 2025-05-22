@@ -1,35 +1,41 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using AYellowpaper.SerializedCollections;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-
-public enum STEPDIRECTION
-{
-    Forward,
-    Backward,
-    Nothing
-}
-
-public class stepManager : MonoBehaviour
+public class StepManager : MonoBehaviour
 {
     
-    public GameObject sceneOfObject;
+    public GameObject workingPlace;
     public Narateur narateur;
-    public List<GameObject> stepObjects;
-    private GameObject currentObject;
-    private int currentGameStep = 0;
-
+    
+    public int numberOfSteps;
+    public List<GameObject> objectsOfSteps;
+    public List<String> textsOfSteps;
+    
     public progressBar progressBar;
+    
+    public PresentationPanel presentationStepPanel;
+
+    [SerializedDictionary("Steps", "Panel Content")]
+    public SerializedDictionary<int, SerializedDictionary<int, ScreenPresentation>> StepScreenPresentations;
+    
+    private GameObject _currentObject;
+    private int _currentGameStep = 0;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // start step
-        currentGameStep = 0;
-        gameObject.transform.position = sceneOfObject.gameObject.transform.position; 
+        _currentGameStep = 0;
+        gameObject.transform.position = workingPlace.gameObject.transform.position; 
 
-        updateStep(STEPDIRECTION.Nothing);
+        // init Step
+        UpdateStep();
     }
 
     // Update is called once per frame
@@ -38,22 +44,22 @@ public class stepManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             
-            if (currentGameStep + 1 < stepObjects.Count)
+            if (_currentGameStep + 1 < objectsOfSteps.Count)
             {
-                updateStep(STEPDIRECTION.Forward);
+                NextStep();
             }
         }
         
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (currentGameStep - 1 >= 0)
+            if (_currentGameStep - 1 >= 0)
             {
-                updateStep(STEPDIRECTION.Backward);
+                PreviousStep();
             }
         }
     }
 
-    bool objectIsValid()
+    bool ObjectIsValid()
     {
         bool validateState = true;
 
@@ -62,61 +68,58 @@ public class stepManager : MonoBehaviour
         return validateState;
     }
 
-    public void updateStep(STEPDIRECTION direction)
+    public void NextStep()
     {
-        // Set the direction of the next step
-        if (direction == STEPDIRECTION.Backward) {
-            currentGameStep--;
-        }else if (direction == STEPDIRECTION.Forward)
+        if (_currentGameStep + 1 < objectsOfSteps.Count)
         {
-            currentGameStep++;
-        }else if(direction == STEPDIRECTION.Nothing){
-
+            _currentGameStep++;
+            UpdateStep();
         }
-        else
+    }
+
+    public void PreviousStep()
+    {
+        if (_currentGameStep - 1 >= 0)
         {
-            Debug.LogError("Error in the direction of the step is different to 0 or 1");
+            _currentGameStep--;
+            UpdateStep();
         }
+    }
 
+    private void UpdateStep()
+    {
+        
+        // display presentation pannel
+        if (StepScreenPresentations[_currentGameStep] != null)
+        {
+            ScreenPresentation currentData = StepScreenPresentations[_currentGameStep][0];
+            presentationStepPanel.ShowPanel(currentData.title, currentData.description);
+        }
+        
         // Display the next Object
-        if (currentObject != null)
+        if (_currentObject != null)
         {
-            Destroy(currentObject);
+            Destroy(_currentObject);
         }
-
-        if (stepObjects[currentGameStep] != null)
+        if (objectsOfSteps[_currentGameStep] != null)
         {
-            currentObject = Instantiate(stepObjects[currentGameStep], gameObject.transform.position, Quaternion.identity);
-            currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
-
+            _currentObject = Instantiate(objectsOfSteps[_currentGameStep], gameObject.transform.position, Quaternion.identity);
+            _currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
         }
         
         // Update the progress bar
-        progressBar.updateState(currentGameStep);
+        progressBar.updateState(_currentGameStep);
 
-
-        // Do other action in function of the step
-        switch (currentGameStep)
-        {
-            case 0:
-                narateur.say("La modélisation du petit pot commence par la réalisation d’une boule de terre bien homogène. Cette première étape est essentielle pour assurer une base régulière et malléable.");
-                break;
-            case 1:
-                narateur.say("Tracer une ligne au centre de la boule permettait non seulement de mieux tenir les pots pendant la fabrication, mais aussi de faciliter leur suspension ou leur transport une fois terminés.");
-                break;
-            case 2:
-                narateur.say("À cette étape, on détermine le volume que le pot devra contenir. Cela implique de creuser et d’élargir l’intérieur de manière régulière pour assurer à la fois la capacité et la stabilité.");
-                break;
-            case 3:
-                narateur.say("Pour faciliter le service des liquides, il était courant de façonner un petit bec verseur. Ce détail rendait le pot plus fonctionnel tout en lui donnant une touche esthétique.");
-                break;
-            case 4:
-                narateur.say("En aplatissant soigneusement le fond du pot, on lui assurait une bonne stabilité une fois posé. Cette étape est cruciale pour que le pot tienne debout de manière sûre et durable.");
-                break;
-            case 5:
-                narateur.say("");
-                break;
-
-        }
+        // Update narrator
+        narateur.say(textsOfSteps[_currentGameStep]);
+        
     }
+}
+
+[System.Serializable]
+public class ScreenPresentation
+{
+    public String title;
+    public String description;
+    public GameObject objectOfStep;
 }

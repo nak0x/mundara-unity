@@ -9,7 +9,7 @@ public class LeapMotion : MonoBehaviour
     public float minSwipeDistance = 0.2f; // in meters
     public float maxSwipeDuration = 1.0f; // in seconds
 
-    public stepManager stepManager;
+    public StepManager stepManager;
 
     public bool canSwipe;
 
@@ -108,13 +108,13 @@ public class LeapMotion : MonoBehaviour
     {
         Debug.Log($"Swipe Right with {(hand.IsLeft ? "Left" : "Right")} hand.");
         // Your logic here
-        stepManager.updateStep(STEPDIRECTION.Backward);
+        stepManager.PreviousStep();
     }
 
     void OnSwipeLeft(Hand hand)
     {
         Debug.Log($"Swipe Left with {(hand.IsLeft ? "Left" : "Right")} hand.");
         // Your logic here
-        stepManager.updateStep(STEPDIRECTION.Forward);
+        stepManager.NextStep();
     }
 }
