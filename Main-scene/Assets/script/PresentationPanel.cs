@@ -22,23 +22,19 @@ public class PresentationPanel : MonoBehaviour
         
     }
 
-    public void ShowPanel(String title, String description)
+    public void ShowPanel()
     {
         gameObject.SetActive(true);
-        titleText.text = title;
-        animationTitleIn();
-        descriptionText.text = description;
-        animationDescriptionIn();
     }
     
-    void hidePanel()
+    public void hidePanel()
     {
         animationTitleOut();
         animationDescriptionOut();
         gameObject.SetActive(false);
     }
 
-    void updatePanel(String title = null, String description = null)
+    public void updatePanel(String title = null, String description = null)
     {
         if (title != null)
         {

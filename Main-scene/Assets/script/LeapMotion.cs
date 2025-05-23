@@ -107,14 +107,12 @@ public class LeapMotion : MonoBehaviour
     void OnSwipeRight(Hand hand)
     {
         Debug.Log($"Swipe Right with {(hand.IsLeft ? "Left" : "Right")} hand.");
-        // Your logic here
-        stepManager.PreviousStep();
+        stepManager.SwipeRight();
     }
 
     void OnSwipeLeft(Hand hand)
     {
         Debug.Log($"Swipe Left with {(hand.IsLeft ? "Left" : "Right")} hand.");
-        // Your logic here
-        stepManager.NextStep();
+        stepManager.SwipeLeft();
     }
 }

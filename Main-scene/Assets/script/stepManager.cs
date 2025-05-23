@@ -26,7 +26,7 @@ public class StepManager : MonoBehaviour
     private GameObject _currentObject;
     private int _currentGameStep = 0;
     
-    private int _currentPanelStep = 0;
+    private int _currentPanelStep;
     private StateStep currentStateStep;
     
 
@@ -35,8 +35,10 @@ public class StepManager : MonoBehaviour
     {
         // start step
         _currentGameStep = 0;
-        gameObject.transform.position = workingPlace.gameObject.transform.position; 
+        gameObject.transform.position = workingPlace.gameObject.transform.position;
 
+        _currentPanelStep = 0;
+        
         // init STATE Step
         currentStateStep = StateStep.PannelStep;
         
@@ -49,19 +51,14 @@ public class StepManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            
-            if (_currentGameStep + 1 < objectsOfSteps.Count)
-            {
-                NextStep();
-            }
+            Debug.Log("Right Key");
+            SwipeRight();
         }
         
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (_currentGameStep - 1 >= 0)
-            {
-                PreviousStep();
-            }
+        {            
+            Debug.Log("Left Key");
+            SwipeLeft();
         }
     }
 
@@ -74,31 +71,62 @@ public class StepManager : MonoBehaviour
         return validateState;
     }
 
-    public void NextStep()
+    public void SwipeLeft()
     {
-        if (_currentGameStep + 1 < objectsOfSteps.Count)
+        if (currentStateStep == StateStep.PannelStep)
         {
+            NextPannelStep();
+        }else if (currentStateStep == StateStep.WorkingStep)
+        {
+            NextStep();
+        }
+    }
+
+    public void SwipeRight()
+    {
+        if (currentStateStep == StateStep.PannelStep)
+        {
+            PreviousPannelStep();
+
+        }else if (currentStateStep == StateStep.WorkingStep)
+        {
+            PreviousStep();
+        }
+    }
+
+    void NextStep()
+    {
+        if (_currentGameStep + 1 < numberOfSteps)
+        {
+            // _currentPanelStep = 0;
             _currentGameStep++;
             currentStateStep = StateStep.PannelStep;
             UpdateStep();
         }
     }
 
-    public void PreviousStep()
+    void PreviousStep()
     {
         if (_currentGameStep - 1 >= 0)
         {
+            // _currentPanelStep = 0;
             _currentGameStep--;
+            currentStateStep = StateStep.PannelStep; // if you dont want the pannel information on back you can remove this 2 ligne 
+            _currentPanelStep = StepScreenPresentations[_currentGameStep].Count - 1;
             UpdateStep();
         }
     }
     
     public void NextPannelStep()
     {
-        if (_currentPanelStep + 1 < objectsOfSteps.Count)
+        if (_currentPanelStep + 1 < numberOfSteps)
         {
             _currentPanelStep++;
             UpdateStep();
+        }
+        else
+        {
+            Debug.Log("cant next pannel");
         }
     }
 
@@ -109,24 +137,49 @@ public class StepManager : MonoBehaviour
             _currentPanelStep--;
             UpdateStep();
         }
+        else
+        {
+            // change step
+            // currentStateStep = StateStep.PannelStep; // if you dont want the pannel information on back you can remove this 2 ligne 
+            PreviousStep();
+        }
     }
 
     private void UpdateStep()
     {
-        
         // check if need to display step pannel
+        Debug.Log("State of the current updata is : "+ currentStateStep);
+        Debug.Log("Current GAME STEP :" + _currentGameStep);
+        Debug.Log("Current PANNEL STEP :" + _currentPanelStep);
         
         // if there is screens to display
         if (currentStateStep == StateStep.PannelStep)
         {
-            if (StepScreenPresentations[_currentGameStep] != null)
+            if (_currentGameStep < StepScreenPresentations.Count && StepScreenPresentations[_currentGameStep] != null)
             {
-                // check last pannel and if the pannel exits
-                if (_currentPanelStep < StepScreenPresentations[_currentGameStep].Count - 1 && StepScreenPresentations[_currentGameStep][_currentPanelStep] != null)
+                
+                presentationStepPanel.ShowPanel();
+                
+                Debug.Log("there is pannel in step");
+                // check last pannel and if the pannel exits in step
+                if (_currentPanelStep < StepScreenPresentations[_currentGameStep].Count)
                 {
-                    // display pannel
-                    ScreenPresentation currentData = StepScreenPresentations[_currentGameStep][_currentPanelStep];
-                    presentationStepPanel.ShowPanel(currentData.title, currentData.description);
+                    Debug.Log("Show current pannel " + _currentPanelStep + " At the step "+ _currentGameStep);
+                    
+                    // check if is there is pannel in the list pannel
+                    if (StepScreenPresentations[_currentGameStep][_currentPanelStep] != null)// 
+                    {
+                        // display pannel
+                        ScreenPresentation currentData = StepScreenPresentations[_currentGameStep][_currentPanelStep];
+                        presentationStepPanel.updatePanel(currentData.title, currentData.description);
+                    }
+                    else
+                    {
+                        // display working UI
+                        currentStateStep = StateStep.WorkingStep;
+                        UpdateStep();
+                    }
+                    
                 }
                 else
                 {
@@ -141,8 +194,12 @@ public class StepManager : MonoBehaviour
                 currentStateStep = StateStep.WorkingStep;
                 UpdateStep();
             }
-        }else if (currentStateStep == StateStep.WorkingStep)
+        }
+        else if (currentStateStep == StateStep.WorkingStep)
         {
+            
+            presentationStepPanel.hidePanel();
+            
             // Display the next Object
             if (_currentObject != null)
             {
@@ -161,7 +218,8 @@ public class StepManager : MonoBehaviour
             narateur.say(textsOfSteps[_currentGameStep]);
             
             // reset State to pannel for the next step
-            currentStateStep = StateStep.PannelStep;
+            // currentStateStep = StateStep.PannelStep;
+            _currentPanelStep = 0;
         }
         
         
