@@ -3,6 +3,9 @@ using Leap;
 
 public class PivotGrabRotate : MonoBehaviour
 {
+    [Header("Target Object")]
+    public Transform targetObject; // The object to be grabbed and rotated
+
     [Header("Pivot Settings")]
     public Transform pivotPoint;
     [Header("Hand Tracking Settings")]
@@ -45,12 +48,6 @@ public class PivotGrabRotate : MonoBehaviour
             handMaterialInstance = handRenderer.material; // This returns an *instance* (not sharedMaterial)
         }
         SetHandColor(notGrabbingColor);
-        rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.useGravity = false;
-            rb.angularDamping = 1f;
-        }
     }
 
     void Update()
@@ -94,24 +91,13 @@ public class PivotGrabRotate : MonoBehaviour
             isGrabbing = true;
             activeHand = hand;
             initialPivotVector = hand.PalmPosition - pivotPoint.position;
-            initialObjectRot = transform.rotation;
+            initialObjectRot = targetObject.rotation;
             angularVelocity = Vector3.zero;
-
-            if (rb != null)
-            {
-                rb.isKinematic = true;
-            }
         }
         else if (isGrabbing && grabStrength < releaseThreshold)
         {
             // RELEASE GRAB
             isGrabbing = false;
-
-            if (rb != null)
-            {
-                rb.isKinematic = false;
-                rb.angularVelocity = Vector3.Scale(angularVelocity, Vector3.one - blockRotation);
-            }
 
             activeHand = null;
             initialPivotVector = Vector3.zero;
@@ -133,7 +119,7 @@ public class PivotGrabRotate : MonoBehaviour
             // Apply rotation constraints
             Vector3 euler = targetRot.eulerAngles;
             euler = Vector3.Scale(euler, Vector3.one - blockRotation);
-            transform.rotation = Quaternion.Euler(euler);
+            targetObject.rotation = Quaternion.Euler(euler);
 
             Quaternion deltaRot = targetRot * Quaternion.Inverse(initialObjectRot);
             deltaRot.ToAngleAxis(out float angleDegrees, out Vector3 axis);
@@ -145,14 +131,14 @@ public class PivotGrabRotate : MonoBehaviour
             else
                 angularVelocity = Vector3.zero;
 
-            initialObjectRot = transform.rotation;
+            initialObjectRot = targetObject.rotation;
             initialPivotVector = currentPivotVector;
         }
         else if (!isGrabbing && rb == null)
         {
             if (angularVelocity != Vector3.zero)
             {
-                transform.Rotate(Vector3.Scale(angularVelocity, Vector3.one - blockRotation) * Mathf.Rad2Deg * Time.deltaTime, Space.World);
+                targetObject.Rotate(Vector3.Scale(angularVelocity, Vector3.one - blockRotation) * Mathf.Rad2Deg * Time.deltaTime, Space.World);
                 angularVelocity = Vector3.Lerp(angularVelocity, Vector3.zero, momentumDamping * Time.deltaTime);
 
                 if (angularVelocity.magnitude < 0.01f)
@@ -169,8 +155,6 @@ public class PivotGrabRotate : MonoBehaviour
 
     public void AdaptHandColor(Hand hand)
     {
-        float distance = EvaluateHandDistance(hand);
-        float normalizedDistance = Mathf.InverseLerp(handDistanceRange.x, handDistanceRange.y, distance);
         Color color;
         if (!isHandInRange(hand))
             color = notInRangeColor;
