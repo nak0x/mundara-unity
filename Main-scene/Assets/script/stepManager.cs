@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AYellowpaper.SerializedCollections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -14,12 +15,15 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
     public Narateur narateur;
     public progressBar progressBar;
     public PresentationPanel presentationStepPanel;
+    public TMP_Text titleText;
     
     [Header("Steps")]
     public int numberOfSteps;
     public List<GameObject> objectsOfSteps;
     public List<String> textsOfSteps;
-
+    public List<String> titlesOfSteps;
+    
+    
     [SerializedDictionary("Step to Display Pannel", "Panel Content")]
     public SerializedDictionary<int, SerializedDictionary<int, ScreenPresentation>> StepScreenPresentations;
     
@@ -217,6 +221,9 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
 
             // Update narrator
             narateur.say(textsOfSteps[_currentGameStep]);
+            
+            // Update the title
+            titleText.text = titlesOfSteps[_currentGameStep];
             
             // reset State to pannel for the next step
             // currentStateStep = StateStep.PannelStep;
