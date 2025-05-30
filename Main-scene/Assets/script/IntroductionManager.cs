@@ -116,6 +116,7 @@ public class IntroductionManager : MonoBehaviour, ILeapMotionActionInterface
             case 4:
                 swipeNumberText.gameObject.GetComponent<TMP_Text>().DOText("", duration);
                 // texte or go to working scene
+                ExperienceManager.instance.UpdateStateOfExperience(ExperienceState.WORKING);
                 break;
         }
     }

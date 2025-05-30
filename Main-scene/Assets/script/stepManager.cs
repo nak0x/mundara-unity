@@ -73,6 +73,7 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
 
     public void SwipeLeft()
     {
+        Debug.Log("Swipe Left in STEP MANAGER in WORKING SCENE");
         if (currentStateStep == StateStep.PannelStep)
         {
             NextPannelStep();
@@ -103,6 +104,11 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
             currentStateStep = StateStep.PannelStep;
             UpdateStep();
         }
+        else
+        {
+            Debug.Log("STEPMANAGER switch to Ending by next step methods");
+            ExperienceManager.instance.UpdateStateOfExperience(ExperienceState.OUTRODUCTION);
+        }
     }
 
     void PreviousStep()
@@ -119,15 +125,8 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
     
     public void NextPannelStep()
     {
-        if (_currentPanelStep + 1 < numberOfSteps)
-        {
-            _currentPanelStep++;
-            UpdateStep();
-        }
-        else
-        {
-            Debug.Log("cant next pannel");
-        }
+        _currentPanelStep++;
+        UpdateStep();
     }
 
     public void PreviousPannelStep()
@@ -198,6 +197,7 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
         else if (currentStateStep == StateStep.WorkingStep)
         {
             
+            Debug.Log("Show working place");
             presentationStepPanel.hidePanel();
             
             // Display the next Object
@@ -220,6 +220,13 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
             // reset State to pannel for the next step
             // currentStateStep = StateStep.PannelStep;
             _currentPanelStep = 0;
+            
+        }
+        else
+        {
+            // end Working time
+            Debug.Log("STEPMANAGER switch to Ending");
+            ExperienceManager.instance.UpdateStateOfExperience(ExperienceState.OUTRODUCTION);
         }
         
         
