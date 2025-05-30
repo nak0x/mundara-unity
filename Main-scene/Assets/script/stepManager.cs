@@ -9,19 +9,20 @@ using UnityEngine;
 public class StepManager : MonoBehaviour, ILeapMotionActionInterface
 {
     
+    [Header("Dépendance")]
     public GameObject workingPlace;
     public Narateur narateur;
+    public progressBar progressBar;
+    public PresentationPanel presentationStepPanel;
     
+    [Header("Steps")]
     public int numberOfSteps;
     public List<GameObject> objectsOfSteps;
     public List<String> textsOfSteps;
-    
-    public progressBar progressBar;
-    
-    public PresentationPanel presentationStepPanel;
 
-    [SerializedDictionary("Steps", "Panel Content")]
+    [SerializedDictionary("Step to Display Pannel", "Panel Content")]
     public SerializedDictionary<int, SerializedDictionary<int, ScreenPresentation>> StepScreenPresentations;
+    
     
     private GameObject _currentObject;
     private int _currentGameStep = 0;
