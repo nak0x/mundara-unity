@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using Leap;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Scripting;
 
 public class LeapMotion : MonoBehaviour
 {
@@ -9,8 +11,11 @@ public class LeapMotion : MonoBehaviour
     public float minSwipeDistance = 0.2f; // in meters
     public float maxSwipeDuration = 1.0f; // in seconds
 
-    public StepManager stepManager;
-
+    // [RequiredInterface(ILeapMotionActionInterface)]
+    public MonoBehaviour LeapMotionActionMono;
+    private ILeapMotionActionInterface LeapMotionAction;
+    
+    
     public bool canSwipe;
 
     private class SwipeTracker
@@ -21,6 +26,15 @@ public class LeapMotion : MonoBehaviour
 
     private Dictionary<int, SwipeTracker> activeSwipes = new();
 
+    void Awake()
+    {
+        LeapMotionAction = LeapMotionActionMono as ILeapMotionActionInterface;
+        if (LeapMotionAction == null)
+        {
+            Debug.LogError("L'objet assigné ne contient pas l'implémentation de ILeapMotionActionInterface");
+        }
+    }
+    
     void Start()
     {
         canSwipe = true;
@@ -104,15 +118,24 @@ public class LeapMotion : MonoBehaviour
         return extended >= 5;
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     void OnSwipeRight(Hand hand)
     {
         Debug.Log($"Swipe Right with {(hand.IsLeft ? "Left" : "Right")} hand.");
-        stepManager.SwipeRight();
+        LeapMotionAction.SwipeRight();
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     void OnSwipeLeft(Hand hand)
     {
         Debug.Log($"Swipe Left with {(hand.IsLeft ? "Left" : "Right")} hand.");
-        stepManager.SwipeLeft();
+        LeapMotionAction.SwipeLeft();
     }
+}
+
+public interface ILeapMotionActionInterface
+{
+    public void SwipeRight(){}
+    
+    public void SwipeLeft(){}
 }

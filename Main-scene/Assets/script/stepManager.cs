@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class StepManager : MonoBehaviour
+public class StepManager : MonoBehaviour, ILeapMotionActionInterface
 {
     
     public GameObject workingPlace;

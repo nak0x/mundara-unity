@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class IntroductionManager : MonoBehaviour
+public class IntroductionManager : MonoBehaviour, ILeapMotionActionInterface
 {
     
     // todo create custom class propertie and get a list of properties
@@ -22,13 +22,17 @@ public class IntroductionManager : MonoBehaviour
     public RectTransform descriptionText;
     public List<DataObject> DescriptionData = new List<DataObject>();
 
+    // swipeNumberText
+    public RectTransform swipeNumberText;
+    
     // HAnds
     public GameObject virtualHands;
     public GameObject reelHands;
     
     public float duration = 1f;
     
-    
+    private bool canSwipe = false;
+    private int swipeCountTutorial = 0;
     private int currentStep = 0;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -91,7 +95,7 @@ public class IntroductionManager : MonoBehaviour
                 
                 // hide virtual hand
                 virtualHands.SetActive(false);
-                
+                swipeNumberText.gameObject.GetComponent<TMP_Text>().DOText("", duration);
                 break;
             case 3:
                 // todo hand URP auto change to outline and need to be ghost hand
@@ -100,12 +104,48 @@ public class IntroductionManager : MonoBehaviour
                 // skip when the swipe is detected 2 times
                 descriptionText.gameObject.GetComponent<TMP_Text>().DOText("Voici le geste pour passez les differentes etapes. Essayer de le reproduire.", duration);
                 virtualHands.SetActive(true);
+                swipeNumberText.gameObject.GetComponent<TMP_Text>().DOText(swipeCountTutorial.ToString() + " / 3 Swipe réussis", duration);
+                if (swipeCountTutorial == 3)
+                {
+                    currentStep++;
+                    UpdateStep(currentStep);
+                }
+                
                 break;
             
             case 4:
-                
+                swipeNumberText.gameObject.GetComponent<TMP_Text>().DOText("", duration);
+                // texte or go to working scene
                 break;
         }
+    }
+
+    public void SwipeLeft()
+    {
+
+        if (currentStep >= 4)
+        {
+            // next step
+            currentStep++;
+            UpdateStep(currentStep);
+        }else if (currentStep == 3)
+        {
+            // tutorial for learn swipe
+            swipeCountTutorial++;
+            UpdateStep(3);
+        }
+        
+    }
+
+    public void SwipeRight()
+    {
+        if (currentStep >= 4)
+        {
+            // previous step
+            currentStep--;
+            UpdateStep(currentStep);
+        }
+        
     }
 }
 
