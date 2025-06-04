@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using AYellowpaper.SerializedCollections;
@@ -16,13 +17,15 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
     public progressBar progressBar;
     public PresentationPanel presentationStepPanel;
     public TMP_Text titleText;
+    public AudioManager audioManager;
     
     [Header("Steps")]
     public int numberOfSteps;
     public List<GameObject> objectsOfSteps;
     public List<String> textsOfSteps;
     public List<String> titlesOfSteps;
-    
+    public List<AudioClip> audioOfSteps;
+    public List<float> audioTimeoutActivations;
     
     [SerializedDictionary("Step to Display Pannel", "Panel Content")]
     public SerializedDictionary<int, SerializedDictionary<int, ScreenPresentation>> StepScreenPresentations;
@@ -106,6 +109,14 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
         {
             // _currentPanelStep = 0;
             _currentGameStep++;
+            
+            // Start timer for the audio
+            StopTimer();
+            if (audioOfSteps[_currentGameStep] != null)
+            {
+                StartTimer(audioTimeoutActivations[_currentGameStep], PlayAudioOfSteps());
+            }
+            
             currentStateStep = StateStep.PannelStep;
             UpdateStep();
         }
@@ -239,6 +250,48 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
         
         
     }
+
+    private Action PlayAudioOfSteps()
+    {
+        return delegate { audioManager.PlayAudio(audioOfSteps[_currentGameStep]); };
+    }
+    
+    public void StartTimer(float seconds, System.Action onFinish)
+    {
+        StopTimer(); // Toujours s'assurer qu'un ancien est arrêté
+        isStopped = false;
+        timerCoroutine = StartCoroutine(Timer(seconds, onFinish));
+    }
+
+    public void StopTimer()
+    {
+        if (timerCoroutine != null)
+        {
+            isStopped = true;
+            StopCoroutine(timerCoroutine);
+            timerCoroutine = null;
+        }
+    }
+    
+    private Coroutine timerCoroutine;
+    private bool isStopped = false;
+    private IEnumerator Timer(float seconds, System.Action onFinish)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < seconds)
+        {
+            if (isStopped)
+                yield break;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        onFinish?.Invoke();
+        timerCoroutine = null;
+    }
+    
 }
 
 [Serializable]

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1367
     height: 847
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 306}
   m_MaxSize: {x: 10000, y: 10000}
@@ -423,7 +423,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -496,7 +496,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 748effff2897ffffea99fffffca5ffff1cfbffff32b20000
+      m_ExpandedIDs: 1cfbffff1cb20000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -513,7 +513,7 @@ MonoBehaviour:
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
-        m_ClientGUIView: {fileID: 8}
+        m_ClientGUIView: {fileID: 0}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1030,9 +1030,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 632.9047, y: 226.16328, z: -7.603287}
+    m_Target: {x: 341.6228, y: 236.47583, z: -5.4876575}
     speed: 2
-    m_Value: {x: 632.9047, y: 226.16328, z: -7.603287}
+    m_Value: {x: 341.6228, y: 236.47583, z: -5.4876575}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1082,9 +1082,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 863.40686
+    m_Target: 651.84314
     speed: 2
-    m_Value: 863.40686
+    m_Value: 651.84314
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -2670,7 +2670,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3d model/pot v1
+    - Assets
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2680,15 +2680,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/3d model/pot v1
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/digital/Documents/GitHub/mundara-unity/Main-scene
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 43.5}
-    m_SelectedIDs: 22c20000
-    m_LastClickedID: 49698
+    m_SelectedIDs: 7ac20000
+    m_LastClickedID: 49786
     m_ExpandedIDs: 000000007ac200007cc200007ec2000080c2000082c2000084c20000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2744,8 +2744,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 12ed0000
-    m_LastClickedInstanceID: 60690
+    m_SelectedInstanceIDs: 8ab20000
+    m_LastClickedInstanceID: 45706
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
