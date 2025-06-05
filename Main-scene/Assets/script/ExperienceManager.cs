@@ -45,6 +45,7 @@ public class ExperienceManager : MonoBehaviour
                 break;
             case ExperienceState.OUTRODUCTION:
                 Debug.Log("===== ENDINGGGGGGG =====");
+                SceneManager.LoadScene("Ending");
                 break;
         }
     }
