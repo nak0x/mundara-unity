@@ -19,9 +19,16 @@ public class PivotGrabRotate : MonoBehaviour
     [Header("Hand Renderer Settings")]
     [Tooltip("Renderer for the hand model, used to change color based on grab state.")]
     public Renderer handRenderer;
+    [Range(0, 10)]
+    public float fresnelIntensity = 0f;
+    [Header("Fresnel Colors")]
     public Color notGrabbingColor = Color.gray;
     public Color grabbingColor = Color.blue;
     public Color notInRangeColor = Color.red;
+    [Header("Base Colors")]
+    public Color baseNotGrabbingColor = Color.gray;
+    public Color baseGrabbingColor = Color.blue;
+    public Color baseNotInRangeColor = Color.red;
 
     [Header("Rotation Constraints")]
     public Vector3 blockRotation = Vector3.zero; // 1 = block axis, 0 = allow
@@ -155,15 +162,26 @@ public class PivotGrabRotate : MonoBehaviour
 
     public void AdaptHandColor(Hand hand)
     {
-        Color color;
+        Color b_color;
+        Color f_color;
         if (!isHandInRange(hand))
-            color = notInRangeColor;
+        {
+            b_color = baseNotInRangeColor;
+            f_color = notInRangeColor;
+        }
         else if (isGrabbing)
-            color = grabbingColor;
+        {
+            b_color = baseGrabbingColor;
+            f_color = grabbingColor;
+        }
         else
-            color = notGrabbingColor;
+        {
+            b_color = baseNotGrabbingColor;
+            f_color = notGrabbingColor;
+        }
 
-        SetHandColor(color);
+        SetHandColor(b_color);
+        SetHandColor(f_color, "_FresnelColor");
     }
 
     public float EvaluateHandDistance(Hand hand)
@@ -171,11 +189,12 @@ public class PivotGrabRotate : MonoBehaviour
         return Vector3.Distance(hand.PalmPosition, pivotPoint.position);
     }
 
-    public void SetHandColor(Color color)
+    public void SetHandColor(Color color, string shader_propertie = "_Color" )
     {
         if (handMaterialInstance != null)
         {
-            handMaterialInstance.SetColor("_FresnelColor", color);
+            handMaterialInstance.SetColor(shader_propertie, color);
+            handMaterialInstance.SetFloat("_FresnelIntensity", fresnelIntensity);
         }
     }
 }
