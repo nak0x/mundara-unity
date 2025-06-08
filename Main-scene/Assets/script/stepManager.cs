@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using AYellowpaper.SerializedCollections;
+using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
@@ -234,7 +235,7 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
             narateur.say(textsOfSteps[_currentGameStep]);
             
             // Update the title
-            titleText.text = titlesOfSteps[_currentGameStep];
+            titleText.DOText(titlesOfSteps[_currentGameStep], 1.0f);
             
             // reset State to pannel for the next step
             // currentStateStep = StateStep.PannelStep;
