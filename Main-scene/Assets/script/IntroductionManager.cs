@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class IntroductionManager : MonoBehaviour, ILeapMotionActionInterface
+public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInterface
 {
     
     // todo create custom class propertie and get a list of properties
