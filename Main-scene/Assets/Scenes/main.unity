@@ -2631,7 +2631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   narrateurText: {fileID: 1842318342}
-  narrateurNameText: {fileID: 0}
+  narrateurNameText: {fileID: 824632778}
   background: {fileID: 1806225547}
   showBackground: 1
 --- !u!1 &1575081270
@@ -2669,25 +2669,27 @@ MonoBehaviour:
   presentationStepPanel: {fileID: 1168964032}
   titleText: {fileID: 1810683255}
   audioManager: {fileID: 1278470174}
-  numberOfSteps: 2
-  objectsOfSteps:
-  - {fileID: 919132149155446097, guid: 1b9d80965f76be84a89c723a64595aaf, type: 3}
-  - {fileID: 919132149155446097, guid: 29b47dd5962014e47915a95e2d75ece0, type: 3}
-  textsOfSteps:
-  - text step 1
-  - 
-  titlesOfSteps:
-  - Bonjour l'etape 1
-  - Bonsoir l'etape 2
-  audioOfSteps:
-  - {fileID: 0}
-  - {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
-  - {fileID: 8300000, guid: 1a5e40629c9054e0797a34b475b8365f, type: 3}
-  - {fileID: 8300000, guid: e109b4b73574e4bd3a249d4d9ede6661, type: 3}
-  audioTimeoutActivations:
-  - 0
-  - 10
-  - 0
+  stepsProps:
+  - objectsOfSteps: {fileID: 919132149155446097, guid: 1b9d80965f76be84a89c723a64595aaf, type: 3}
+    textsOfSteps: Salut ceci est le texte numero 1
+    titlesOfSteps: Etape 1
+    audioOfSteps: {fileID: 0}
+    audioTimeoutActivations: 0
+  - objectsOfSteps: {fileID: 919132149155446097, guid: 29b47dd5962014e47915a95e2d75ece0, type: 3}
+    textsOfSteps: Texte 2
+    titlesOfSteps: Etape 2
+    audioOfSteps: {fileID: 0}
+    audioTimeoutActivations: 0
+  - objectsOfSteps: {fileID: 919132149155446097, guid: 15603e1de11fd1a46b02516c798f7d75, type: 3}
+    textsOfSteps: 
+    titlesOfSteps: Etape 3
+    audioOfSteps: {fileID: 0}
+    audioTimeoutActivations: 0
+  - objectsOfSteps: {fileID: 919132149155446097, guid: 849476e72b1c40a498c4eeb9b46871bc, type: 3}
+    textsOfSteps: 'Etape 4 '
+    titlesOfSteps: Etape 4
+    audioOfSteps: {fileID: 0}
+    audioTimeoutActivations: 0
   StepScreenPresentations:
     _serializedList:
     - Key: 0

@@ -21,12 +21,7 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
     public AudioManager audioManager;
     
     [Header("Steps")]
-    public int numberOfSteps;
-    public List<GameObject> objectsOfSteps;
-    public List<String> textsOfSteps;
-    public List<String> titlesOfSteps;
-    public List<AudioClip> audioOfSteps;
-    public List<float> audioTimeoutActivations;
+    public List<StepsProperties> stepsProps;
     
     [SerializedDictionary("Step to Display Pannel", "Panel Content")]
     public SerializedDictionary<int, SerializedDictionary<int, ScreenPresentation>> StepScreenPresentations;
@@ -106,16 +101,16 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
 
     void NextStep()
     {
-        if (_currentGameStep + 1 < numberOfSteps)
+        if (_currentGameStep + 1 < stepsProps.Count)
         {
             // _currentPanelStep = 0;
             _currentGameStep++;
             
             // Start timer for the audio
             StopTimer();
-            if (audioOfSteps[_currentGameStep] != null)
+            if (stepsProps[_currentGameStep].audioOfSteps != null)
             {
-                StartTimer(audioTimeoutActivations[_currentGameStep], PlayAudioOfSteps());
+                StartTimer(stepsProps[_currentGameStep].audioTimeoutActivations, PlayAudioOfSteps());
             }
             
             currentStateStep = StateStep.PannelStep;
@@ -222,9 +217,9 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
             {
                 Destroy(_currentObject);
             }
-            if (objectsOfSteps[_currentGameStep] != null)
+            if (stepsProps[_currentGameStep].objectsOfSteps != null)
             {
-                _currentObject = Instantiate(objectsOfSteps[_currentGameStep], gameObject.transform.position, Quaternion.identity);
+                _currentObject = Instantiate(stepsProps[_currentGameStep].objectsOfSteps, gameObject.transform.position, Quaternion.identity);
                 _currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
             }
         
@@ -232,10 +227,10 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
             progressBar.updateState(_currentGameStep);
 
             // Update narrator
-            narateur.say(textsOfSteps[_currentGameStep]);
+            narateur.say(stepsProps[_currentGameStep].textsOfSteps);
             
             // Update the title
-            titleText.DOText(titlesOfSteps[_currentGameStep], 1.0f);
+            titleText.DOText(stepsProps[_currentGameStep].titlesOfSteps, 1.0f);
             
             // reset State to pannel for the next step
             // currentStateStep = StateStep.PannelStep;
@@ -254,7 +249,7 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
 
     private Action PlayAudioOfSteps()
     {
-        return delegate { audioManager.PlayAudio(audioOfSteps[_currentGameStep]); };
+        return delegate { audioManager.PlayAudio(stepsProps[_currentGameStep].audioOfSteps); };
     }
     
     public void StartTimer(float seconds, System.Action onFinish)
@@ -301,6 +296,16 @@ public class ScreenPresentation
     public String title;
     public String description;
     public GameObject objectOfStep;
+}
+
+[Serializable]
+public class StepsProperties
+{
+    public GameObject objectsOfSteps;
+    public String textsOfSteps;
+    public String titlesOfSteps;
+    public AudioClip audioOfSteps;
+    public float audioTimeoutActivations;
 }
 
 enum StateStep
