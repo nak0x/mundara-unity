@@ -1,27 +1,36 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using AYellowpaper.SerializedCollections;
+using DG.Tweening;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class StepManager : MonoBehaviour
+public class StepManager : MonoBehaviour, ILeapMotionActionInterface
 {
     
+    [Header("Dépendance")]
     public GameObject workingPlace;
     public Narateur narateur;
+    public progressBar progressBar;
+    public PresentationPanel presentationStepPanel;
+    public TMP_Text titleText;
+    public AudioManager audioManager;
     
+    [Header("Steps")]
     public int numberOfSteps;
     public List<GameObject> objectsOfSteps;
     public List<String> textsOfSteps;
+    public List<String> titlesOfSteps;
+    public List<AudioClip> audioOfSteps;
+    public List<float> audioTimeoutActivations;
     
-    public progressBar progressBar;
-    
-    public PresentationPanel presentationStepPanel;
-
-    [SerializedDictionary("Steps", "Panel Content")]
+    [SerializedDictionary("Step to Display Pannel", "Panel Content")]
     public SerializedDictionary<int, SerializedDictionary<int, ScreenPresentation>> StepScreenPresentations;
+    
     
     private GameObject _currentObject;
     private int _currentGameStep = 0;
@@ -73,6 +82,7 @@ public class StepManager : MonoBehaviour
 
     public void SwipeLeft()
     {
+        Debug.Log("Swipe Left in STEP MANAGER in WORKING SCENE");
         if (currentStateStep == StateStep.PannelStep)
         {
             NextPannelStep();
@@ -100,8 +110,21 @@ public class StepManager : MonoBehaviour
         {
             // _currentPanelStep = 0;
             _currentGameStep++;
+            
+            // Start timer for the audio
+            StopTimer();
+            if (audioOfSteps[_currentGameStep] != null)
+            {
+                StartTimer(audioTimeoutActivations[_currentGameStep], PlayAudioOfSteps());
+            }
+            
             currentStateStep = StateStep.PannelStep;
             UpdateStep();
+        }
+        else
+        {
+            Debug.Log("STEPMANAGER switch to Ending by next step methods");
+            ExperienceManager.instance.UpdateStateOfExperience(ExperienceState.OUTRODUCTION);
         }
     }
 
@@ -119,15 +142,8 @@ public class StepManager : MonoBehaviour
     
     public void NextPannelStep()
     {
-        if (_currentPanelStep + 1 < numberOfSteps)
-        {
-            _currentPanelStep++;
-            UpdateStep();
-        }
-        else
-        {
-            Debug.Log("cant next pannel");
-        }
+        _currentPanelStep++;
+        UpdateStep();
     }
 
     public void PreviousPannelStep()
@@ -198,6 +214,7 @@ public class StepManager : MonoBehaviour
         else if (currentStateStep == StateStep.WorkingStep)
         {
             
+            Debug.Log("Show working place");
             presentationStepPanel.hidePanel();
             
             // Display the next Object
@@ -217,13 +234,65 @@ public class StepManager : MonoBehaviour
             // Update narrator
             narateur.say(textsOfSteps[_currentGameStep]);
             
+            // Update the title
+            titleText.DOText(titlesOfSteps[_currentGameStep], 1.0f);
+            
             // reset State to pannel for the next step
             // currentStateStep = StateStep.PannelStep;
             _currentPanelStep = 0;
+            
+        }
+        else
+        {
+            // end Working time
+            Debug.Log("STEPMANAGER switch to Ending");
+            ExperienceManager.instance.UpdateStateOfExperience(ExperienceState.OUTRODUCTION);
         }
         
         
     }
+
+    private Action PlayAudioOfSteps()
+    {
+        return delegate { audioManager.PlayAudio(audioOfSteps[_currentGameStep]); };
+    }
+    
+    public void StartTimer(float seconds, System.Action onFinish)
+    {
+        StopTimer(); // Toujours s'assurer qu'un ancien est arrêté
+        isStopped = false;
+        timerCoroutine = StartCoroutine(Timer(seconds, onFinish));
+    }
+
+    public void StopTimer()
+    {
+        if (timerCoroutine != null)
+        {
+            isStopped = true;
+            StopCoroutine(timerCoroutine);
+            timerCoroutine = null;
+        }
+    }
+    
+    private Coroutine timerCoroutine;
+    private bool isStopped = false;
+    private IEnumerator Timer(float seconds, System.Action onFinish)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < seconds)
+        {
+            if (isStopped)
+                yield break;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        onFinish?.Invoke();
+        timerCoroutine = null;
+    }
+    
 }
 
 [Serializable]
