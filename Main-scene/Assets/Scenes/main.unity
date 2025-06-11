@@ -1140,7 +1140,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1705,15 +1705,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913963281899232577, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.35686275
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2913963281899232577, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.38039216
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2913963281899232577, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.40784314
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3041644777686962502, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1795,6 +1795,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.008796699
       objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: trackedHand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: handRenderer
+      value: 
+      objectReference: {fileID: 1491975789}
     - target: {fileID: 3786646543145252784, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.0000124
@@ -2539,6 +2547,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 500610515}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &1491975789 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4081234230432350914, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+  m_PrefabInstance: {fileID: 1205372668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1515281547
 GameObject:
   m_ObjectHideFlags: 0
