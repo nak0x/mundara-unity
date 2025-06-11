@@ -694,9 +694,9 @@ RectTransform:
   - {fileID: 1515281548}
   - {fileID: 64879569}
   - {fileID: 952133159}
-  - {fileID: 1168964031}
   - {fileID: 1810683254}
   - {fileID: 1068444563}
+  - {fileID: 1168964031}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -875,7 +875,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -4.9817, y: -5.2532}
-  m_SizeDelta: {x: 199.8037, y: 120.089}
+  m_SizeDelta: {x: 479.5, y: 252.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &658174273
 MonoBehaviour:
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.40784314, g: 0.23137255, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1486,7 +1486,7 @@ GameObject:
   - component: {fileID: 1068444565}
   - component: {fileID: 1068444564}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: PreviewImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
