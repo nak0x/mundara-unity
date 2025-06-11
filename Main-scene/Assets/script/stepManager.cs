@@ -19,6 +19,7 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
     public PresentationPanel presentationStepPanel;
     public TMP_Text titleText;
     public AudioManager audioManager;
+    public GameObject stepPreviewContainer;
     
     [Header("Steps")]
     public List<StepsProperties> stepsProps;
@@ -217,10 +218,25 @@ public class StepManager : MonoBehaviour, ILeapMotionActionInterface
             {
                 Destroy(_currentObject);
             }
+
+            Debug.Log("Children : ", stepPreviewContainer.transform.GetChild(0));
+            if (stepPreviewContainer.transform.GetChild(0) != null)
+            {
+                Destroy(stepPreviewContainer.transform.GetChild(0).gameObject);
+            }
+
+
             if (stepsProps[_currentGameStep].objectsOfSteps != null)
             {
+                // Instanciate the gameobject in the working place
                 _currentObject = Instantiate(stepsProps[_currentGameStep].objectsOfSteps, gameObject.transform.position, Quaternion.identity);
                 _currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+                _currentObject.name = "Phantom Pots";
+
+                // Instanciate in the preview
+                GameObject previewPots = Instantiate(stepsProps[_currentGameStep].objectsOfSteps, gameObject.transform.position, Quaternion.identity, stepPreviewContainer.transform);
+                previewPots.name = "Preview Pots";
+                previewPots.transform.localPosition = Vector3.zero;
             }
         
             // Update the progress bar
