@@ -181,9 +181,9 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.078431375}
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _Color: {r: 0.5294118, g: 0.46666667, b: 0.3529412, a: 0.5686275}
+    - _Color: {r: 0, g: 0, b: 0, a: 0.9019608}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 1, g: 0.68235296, b: 0, a: 1}
+    - _FresnelColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0.36078432}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999984, g: 0.19999984, b: 0.19999984, a: 0}
