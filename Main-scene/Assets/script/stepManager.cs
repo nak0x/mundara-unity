@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class StepManager : MonoBehaviour, ILeapMotionActionInterface
+public class StepManager : MonoBehaviour, Gestures.ILeapMotionActionInterface
 {
     
     [Header("Dépendance")]
