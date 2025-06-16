@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: URP Ghost
+  m_Name: Hands
   m_Shader: {fileID: 4800000, guid: c376fa8d203dae04b87a1b547b7f7fe3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

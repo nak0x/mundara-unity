@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3defe4ee8b2594c9a90c00f8f0e56d9c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 97fa04617f59743fea2a91521d4d7d63, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -32,7 +32,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hand recorder example animator
+  m_Name: HandAnimator
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
