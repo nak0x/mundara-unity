@@ -1567,6 +1567,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.011821747
       objectReference: {fileID: 0}
+    - target: {fileID: 204427559243987592, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 281335054711178755, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.06769789
@@ -1803,6 +1807,10 @@ PrefabInstance:
       propertyPath: handRenderer
       value: 
       objectReference: {fileID: 1491975789}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: useTutorialHands
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3786646543145252784, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.0000124
