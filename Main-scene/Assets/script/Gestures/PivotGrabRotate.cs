@@ -8,6 +8,11 @@ namespace Gestures
     /// </summary>
     public class PivotGrabRotate : MonoBehaviour
     {
+        [Header("Hands & Animated hands")]
+        public GameObject animatedHands; // Reference to the animated hands object
+        public GameObject hands; // Reference to the hands object
+        public bool useTutorialHands = true; // Whether to use tutorial hands or not
+
         [Header("Target Object")]
         public Transform targetObject; // The object to be grabbed and rotated
 
@@ -72,8 +77,16 @@ namespace Gestures
             Hand hand = Hands.Provider.GetHand(trackedHand);
             if (hand == null)
             {
+                if (useTutorialHands)
+                {
+                    animatedHands.SetActive(true);
+                }
+                hands.SetActive(false);
                 return;
             }
+
+            hands.SetActive(true);
+            animatedHands.SetActive(false);
 
             if (debugging)
             {
