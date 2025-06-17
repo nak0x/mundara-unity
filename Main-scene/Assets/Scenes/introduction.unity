@@ -722,7 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSwipeDistance: 0.2
   maxSwipeDuration: 1
-  pivotGrabRotate: {fileID: 0}
+  pivotGrabRotate: {fileID: 7132129690415544337}
   LeapMotionActionMono: {fileID: 1614362133}
 --- !u!4 &946318259
 Transform:
@@ -4720,7 +4720,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5ab2a3895862488bbb76fc504365e13, type: 2}
+  - {fileID: 2100000, guid: 3f83826fa3b72484d94859111b7d9f9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9076,7 +9076,7 @@ MonoBehaviour:
   useTutorialHands: 1
   targetObject: {fileID: 4218303446147014133}
   pivotPoint: {fileID: 4218303446147014133}
-  trackedHand: 0
+  trackedHand: 1
   grabThreshold: 0.7
   releaseThreshold: 0.7
   momentumDamping: 7
@@ -9092,7 +9092,9 @@ MonoBehaviour:
   blockRotation: {x: 1, y: 0, z: 1}
   rotationFactor: 1
   rotationDPI: 5.6
-  debugging: 1
+  debugging: 0
+  Observers:
+  - {fileID: 1614362133}
 --- !u!1 &7142143160672081863
 GameObject:
   m_ObjectHideFlags: 0

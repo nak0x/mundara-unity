@@ -88,7 +88,7 @@ namespace Gestures
 
                     if (elapsed <= maxSwipeDuration && Mathf.Abs(distance) >= minSwipeDistance)
                     {
-                        if (canSwipe == true && pivotGrabRotate.isGrabbing == false)
+                        if (canSwipe == true && pivotGrabRotate?.isGrabbing == false)
                         {
                             Debug.Log("Swiping !!!");
                             canSwipe = false;

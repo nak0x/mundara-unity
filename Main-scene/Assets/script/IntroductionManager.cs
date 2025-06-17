@@ -35,10 +35,12 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
     public GameObject virtualHandsSwipe;
     public GameObject reelHands;
     public Vector3 positionEndreelHands;
+    private bool handAlwaysDetected = false;
     
     [Header("Grab")]
     public GameObject grabObject;
     public Vector3 grabObjectPosition;
+    private bool grabbingAlwaysDetected = false;
     
     public float duration = 1f;
     
@@ -91,6 +93,7 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
                 Subtitle.DOAnchorPosY(SubtitleData[currentStep].positionY, duration);
                 virtualHandsSwipe.SetActive(false);
 
+                // auto skip after 1 sec
                 StartCoroutine(NextStepAfterSec(1));
                 break;
             case 1:
@@ -103,6 +106,7 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
                 descriptionText.gameObject.GetComponent<TMP_Text>().DOColor(new Color(0,0,0,0), duration);
                 reelHands.transform.DOMove(new Vector3(0.00899999961f,-0.395999998f,-0.63499999f), duration);
                 
+                // auto skip after 2 sec
                 StartCoroutine(NextStepAfterSec(2));
                 break;
             case 2:
@@ -122,6 +126,7 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
                 
                 
                 // skip when after 2 sec when the hand is detected
+                // => check with observer pattern and IntroductionManager.OnHandDetected function !
                 break;
             case 3:
                 // todo hand URP auto change to outline and need to be ghost hand
@@ -149,6 +154,7 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
                 grabObject.transform.DOMove(grabObjectPosition, 5f);
                 
                 // skip after 2 sec of grapping detected
+                // => check with observer pattern and IntroductionManager.OnGrab function !
                 break;
             case 5:
                 ExperienceManager.instance.UpdateStateOfExperience(ExperienceState.WORKING);
@@ -176,9 +182,9 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
 
         if (currentStep >= 4)
         {
-            // next step
-            currentStep++;
-            UpdateStep(currentStep);
+            // next step after we learn swipe mouvement
+            // currentStep++;
+            // UpdateStep(currentStep);
         }else if (currentStep == 3)
         {
             // tutorial for learn swipe
@@ -197,6 +203,24 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
             UpdateStep(currentStep);
         }
         
+    }
+
+    public void OnGrab()
+    {
+        if (currentStep == 4 && grabbingAlwaysDetected == false)
+        {
+            grabbingAlwaysDetected = true;
+            StartCoroutine(NextStepAfterSec(3));
+        }
+    }
+
+    public void OnHandDetected()
+    {
+        if (currentStep == 2 && handAlwaysDetected == false)
+        {
+            handAlwaysDetected = true;
+            StartCoroutine(NextStepAfterSec(3));
+        }
     }
 }
 

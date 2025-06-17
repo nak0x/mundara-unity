@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Leap;
 
@@ -51,6 +52,9 @@ namespace Gestures
 
         [Header("Debugging")]
         public bool debugging = false;
+        
+        [Header("Observers Action")]
+        public List<IntroductionManager> Observers = new List<IntroductionManager>();
 
 
         // Private variables
@@ -75,16 +79,20 @@ namespace Gestures
         void Update()
         {
             Hand hand = Hands.Provider.GetHand(trackedHand);
-            if (hand == null)
+            if (hand != null)
             {
+                OnHandDetected();
+            }
+            else
+            {
+                hands.SetActive(false);
                 if (useTutorialHands)
                 {
                     animatedHands.SetActive(true);
                 }
-                // hands.SetActive(false);
                 return;
             }
-
+            
             hands.SetActive(true);
             animatedHands.SetActive(false);
 
@@ -123,6 +131,9 @@ namespace Gestures
                 initialPivotVector = hand.PalmPosition - pivotPoint.position;
                 initialObjectRot = targetObject.rotation;
                 angularVelocity = Vector3.zero;
+                
+                // Event grabbing
+                OnGrabbing();
             }
             else if (isGrabbing && grabStrength < releaseThreshold)
             {
@@ -218,6 +229,23 @@ namespace Gestures
             {
                 handMaterialInstance.SetColor(shader_propertie, color);
                 handMaterialInstance.SetFloat("_FresnelIntensity", fresnelIntensity);
+            }
+        }
+
+
+        public void OnGrabbing()
+        {
+            for (int i = 0; i < Observers.Count; i++)
+            {
+                Observers[i].OnGrab();
+            }
+        }
+
+        public void OnHandDetected()
+        {
+            for (int i = 0; i < Observers.Count; i++)
+            {
+                Observers[i].OnHandDetected();
             }
         }
     }
