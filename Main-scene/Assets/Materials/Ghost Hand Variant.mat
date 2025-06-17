@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Ghost Hand Variant
   m_Shader: {fileID: 4800000, guid: c376fa8d203dae04b87a1b547b7f7fe3, type: 3}
-  m_Parent: {fileID: 2100000, guid: e6e852044df74ee4cb4487a98053893d, type: 2}
+  m_Parent: {fileID: 2100000, guid: 3f83826fa3b72484d94859111b7d9f9d, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:

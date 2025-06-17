@@ -81,7 +81,7 @@ namespace Gestures
                 {
                     animatedHands.SetActive(true);
                 }
-                hands.SetActive(false);
+                // hands.SetActive(false);
                 return;
             }
 
