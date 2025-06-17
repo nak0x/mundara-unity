@@ -691,7 +691,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 182.7}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 855.52, y: 68.8365}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525257967
 MonoBehaviour:
@@ -715,8 +715,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2c377538f7d2f437687d736f29341f9d, type: 2}
+  m_sharedMaterial: {fileID: -2604267680050605035, guid: 2c377538f7d2f437687d736f29341f9d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -747,8 +747,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &525257968
@@ -1460,7 +1460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 740, y: 336}
+  m_AnchoredPosition: {x: 751, y: 300}
   m_SizeDelta: {x: 313.6473, y: 313.6473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068444564
@@ -1803,6 +1803,78 @@ PrefabInstance:
       propertyPath: handRenderer
       value: 
       objectReference: {fileID: 1491975789}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: grabbingColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: grabbingColor.g
+      value: 0.6794369
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: grabbingColor.r
+      value: 0.033018887
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: notInRangeColor.b
+      value: 0.30709326
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: notInRangeColor.g
+      value: 0.48550805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: notInRangeColor.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: notGrabbingColor.b
+      value: 0.00427413
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: notGrabbingColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: notGrabbingColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseGrabbingColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseGrabbingColor.g
+      value: 0.63297975
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseGrabbingColor.r
+      value: 0.023584902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseNotInRangeColor.b
+      value: 0.33882165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseNotInRangeColor.g
+      value: 0.44158655
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseNotInRangeColor.r
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseNotGrabbingColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseNotGrabbingColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728936708291579160, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+      propertyPath: baseNotGrabbingColor.r
+      value: 0.06607044
+      objectReference: {fileID: 0}
     - target: {fileID: 3786646543145252784, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.0000124
@@ -2645,25 +2717,29 @@ MonoBehaviour:
   stepPreviewContainer: {fileID: 672691020}
   stepsProps:
   - objectsOfSteps: {fileID: 919132149155446097, guid: 1b9d80965f76be84a89c723a64595aaf, type: 3}
-    textsOfSteps: Salut ceci est le texte numero 1
-    titlesOfSteps: Etape 1
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: En roulant la terre dans vos mains et en vous aidant de la table,
+      realiser un cylindre en terre.
+    titlesOfSteps: 'Etape 1 : Le cylindre, la base de notre pot.'
+    audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
+    audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 29b47dd5962014e47915a95e2d75ece0, type: 3}
-    textsOfSteps: Texte 2
-    titlesOfSteps: Etape 2
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: Appuyer avec vos mains sur le millieu du cylindre pour lui donner
+      une forme de 8 applatis sur le haut et le bas.
+    titlesOfSteps: 'Etape 2 : Prise en main'
+    audioOfSteps: {fileID: 8300000, guid: 1a5e40629c9054e0797a34b475b8365f, type: 3}
+    audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 15603e1de11fd1a46b02516c798f7d75, type: 3}
-    textsOfSteps: 
-    titlesOfSteps: Etape 3
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: Avec vos doigts, appuyer sur le dessus du cylindre afin de creer
+      l'espace pour contenir le liquide
+    titlesOfSteps: 'Etape 3 : L''espace pour le liquide'
+    audioOfSteps: {fileID: 8300000, guid: e109b4b73574e4bd3a249d4d9ede6661, type: 3}
+    audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 849476e72b1c40a498c4eeb9b46871bc, type: 3}
-    textsOfSteps: 'Etape 4 '
-    titlesOfSteps: Etape 4
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: Deformer en pincant un coter de l'espace pour le liquide afin de
+      faire un bec verseur
+    titlesOfSteps: 'Etape 4 : Le bec verseur'
+    audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
+    audioTimeoutActivations: 1
   StepScreenPresentations:
     _serializedList:
     - Key: 0
@@ -2671,8 +2747,36 @@ MonoBehaviour:
         _serializedList:
         - Key: 0
           Value:
-            title: title pannel
-            description: desc pannel
+            title: 'Etape 1 : Le cylindre, la base de notre pot'
+            description: 'Dans cette etape nous realiserons un cylindre uniforme
+              qui servira de base pour notre pot. Cette etape est important '
+            objectOfStep: {fileID: 0}
+    - Key: 1
+      Value:
+        _serializedList:
+        - Key: 0
+          Value:
+            title: 'Etape 2 : Prise en main'
+            description: Appuyer avec vos mains sur le millieu du cylindre pour lui
+              donner une forme de 8 applatis sur le haut et le bas.
+            objectOfStep: {fileID: 0}
+    - Key: 2
+      Value:
+        _serializedList:
+        - Key: 0
+          Value:
+            title: 'Etape 3 : L''espace pour le liquide'
+            description: Avec vos doigts, appuyer sur le dessus du cylindre afin
+              de creer l'espace pour contenir le liquide
+            objectOfStep: {fileID: 0}
+    - Key: 3
+      Value:
+        _serializedList:
+        - Key: 0
+          Value:
+            title: 'Etape 4 : Le bec verseur'
+            description: Deformer en pincant un coter de l'espace pour le liquide
+              afin de faire un bec verseur
             objectOfStep: {fileID: 0}
 --- !u!4 &1575081272
 Transform:
@@ -2832,7 +2936,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -173.4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 855.5153, y: 260.9704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1703645787
 MonoBehaviour:
@@ -2856,8 +2960,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2c377538f7d2f437687d736f29341f9d, type: 2}
+  m_sharedMaterial: {fileID: -2604267680050605035, guid: 2c377538f7d2f437687d736f29341f9d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2888,8 +2992,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2922,7 +3026,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1703645788
@@ -3212,8 +3316,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -768, y: 351}
-  m_SizeDelta: {x: 300, y: 250}
+  m_AnchoredPosition: {x: -768, y: 322}
+  m_SizeDelta: {x: 337.8391, y: 304.6566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806225548
 MonoBehaviour:
@@ -3285,7 +3389,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 444.47}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 1112.3438, y: 100.4521}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1810683255
 MonoBehaviour:
