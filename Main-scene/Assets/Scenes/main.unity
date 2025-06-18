@@ -864,11 +864,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658174271}
   m_CullTransparentMesh: 1
---- !u!1 &672691020 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3631029532420707431, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
-  m_PrefabInstance: {fileID: 1205372668}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &810779523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,34 +2712,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2b107abccd68b418d13f130e1d8669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workingPlace: {fileID: 500610514}
-  narateur: {fileID: 1515281549}
-  progressBar: {fileID: 952133160}
-  presentationStepPanel: {fileID: 1168964032}
-  titleText: {fileID: 1810683255}
-  audioManager: {fileID: 1278470174}
-  stepPreviewContainer: {fileID: 672691020}
+  workingPlace: {fileID: 0}
+  narateur: {fileID: 0}
+  progressBar: {fileID: 0}
+  presentationStepPanel: {fileID: 0}
+  titleText: {fileID: 0}
+  audioManager: {fileID: 0}
+  stepPreviewContainer: {fileID: 0}
   stepsProps:
   - objectsOfSteps: {fileID: 919132149155446097, guid: 1b9d80965f76be84a89c723a64595aaf, type: 3}
-    textsOfSteps: Salut ceci est le texte numero 1
-    titlesOfSteps: Etape 1
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: En roulant la terre dans vos mains et en vous aidant de la table,
+      realiser un cylindre en terre.
+    titlesOfSteps: 'Etape 1 : Le cylindre, la base de notre pot.'
+    audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
+    audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 29b47dd5962014e47915a95e2d75ece0, type: 3}
-    textsOfSteps: Texte 2
-    titlesOfSteps: Etape 2
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: Appuyer avec vos mains sur le millieu du cylindre pour lui donner
+      une forme de 8 applatis sur le haut et le bas.
+    titlesOfSteps: 'Etape 2 : Prise en main'
+    audioOfSteps: {fileID: 8300000, guid: 1a5e40629c9054e0797a34b475b8365f, type: 3}
+    audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 15603e1de11fd1a46b02516c798f7d75, type: 3}
-    textsOfSteps: 
-    titlesOfSteps: Etape 3
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: Avec vos doigts, appuyer sur le dessus du cylindre afin de creer
+      l'espace pour contenir le liquide
+    titlesOfSteps: 'Etape 3 : L''espace pour le liquide'
+    audioOfSteps: {fileID: 8300000, guid: e109b4b73574e4bd3a249d4d9ede6661, type: 3}
+    audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 849476e72b1c40a498c4eeb9b46871bc, type: 3}
-    textsOfSteps: 'Etape 4 '
-    titlesOfSteps: Etape 4
-    audioOfSteps: {fileID: 0}
-    audioTimeoutActivations: 0
+    textsOfSteps: Deformer en pincant un coter de l'espace pour le liquide afin de
+      faire un bec verseur
+    titlesOfSteps: 'Etape 4 : Le bec verseur'
+    audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
+    audioTimeoutActivations: 1
   StepScreenPresentations:
     _serializedList:
     - Key: 0
@@ -2752,8 +2751,36 @@ MonoBehaviour:
         _serializedList:
         - Key: 0
           Value:
-            title: title pannel
-            description: desc pannel
+            title: 'Etape 1 : Le cylindre, la base de notre pot'
+            description: 'Dans cette etape nous realiserons un cylindre uniforme
+              qui servira de base pour notre pot. Cette etape est important '
+            objectOfStep: {fileID: 0}
+    - Key: 1
+      Value:
+        _serializedList:
+        - Key: 0
+          Value:
+            title: 'Etape 2 : Prise en main'
+            description: Appuyer avec vos mains sur le millieu du cylindre pour lui
+              donner une forme de 8 applatis sur le haut et le bas.
+            objectOfStep: {fileID: 0}
+    - Key: 2
+      Value:
+        _serializedList:
+        - Key: 0
+          Value:
+            title: 'Etape 3 : L''espace pour le liquide'
+            description: Avec vos doigts, appuyer sur le dessus du cylindre afin
+              de creer l'espace pour contenir le liquide
+            objectOfStep: {fileID: 0}
+    - Key: 3
+      Value:
+        _serializedList:
+        - Key: 0
+          Value:
+            title: 'Etape 4 : Le bec verseur'
+            description: Deformer en pincant un coter de l'espace pour le liquide
+              afin de faire un bec verseur
             objectOfStep: {fileID: 0}
 --- !u!4 &1575081272
 Transform:
