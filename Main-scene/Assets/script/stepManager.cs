@@ -213,13 +213,14 @@ public class StepManager : MonoBehaviour, Gestures.ILeapMotionActionInterface
             Debug.Log("Show working place");
             presentationStepPanel.hidePanel();
             
-            // Display the next Object
+            // Destroy the previous Object
             if (_currentObject != null)
             {
                 Destroy(_currentObject);
             }
 
             Debug.Log("Children : ", stepPreviewContainer.transform.GetChild(0));
+            // Destroy prewiew object
             if (stepPreviewContainer.transform.GetChild(0) != null)
             {
                 Destroy(stepPreviewContainer.transform.GetChild(0).gameObject);

@@ -2514,6 +2514,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62ee75baf2e04b7da14aeeb0194e6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1350747898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3631029532420707431, guid: 5276523a7243a49c597e9dd0be075e09, type: 3}
+  m_PrefabInstance: {fileID: 1205372668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380916148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,7 +2723,7 @@ MonoBehaviour:
   presentationStepPanel: {fileID: 1168964032}
   titleText: {fileID: 1810683255}
   audioManager: {fileID: 1278470174}
-  stepPreviewContainer: {fileID: 1168964030}
+  stepPreviewContainer: {fileID: 1350747898}
   stepsProps:
   - objectsOfSteps: {fileID: 919132149155446097, guid: 1b9d80965f76be84a89c723a64595aaf, type: 3}
     textsOfSteps: En roulant la terre dans vos mains et en vous aidant de la table,
