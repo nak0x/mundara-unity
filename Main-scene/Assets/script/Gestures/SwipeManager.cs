@@ -98,7 +98,7 @@ namespace Gestures
                                 OnSwipeLeft(hand);
 
                             activeSwipes.Remove(id); // prevent re-trigger
-                            StartCoroutine(DelaySwipe(3f));
+                            StartCoroutine(DelaySwipe(2f));
                         }
                         else
                         {
