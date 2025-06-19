@@ -1134,14 +1134,14 @@ RectTransform:
   m_GameObject: {fileID: 863001063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.125, y: 1.6150258, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1515281548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 736, y: 278.7558}
+  m_AnchoredPosition: {x: 736, y: 79}
   m_SizeDelta: {x: 377.0087, y: 472.4884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &863001065
@@ -2727,7 +2727,7 @@ MonoBehaviour:
   audioManager: {fileID: 1278470174}
   stepPreviewContainer: {fileID: 1350747898}
   stepsProps:
-  - objectsOfSteps: {fileID: 919132149155446097, guid: 1b9d80965f76be84a89c723a64595aaf, type: 3}
+  - objectsOfSteps: {fileID: 919132149155446097, guid: 43f5cccd93290460e82920e85ff1d299, type: 3}
     textInformation: "Afin de d\xE9finir la forme initiale de votre c\xE1ntaro, vous
       devez cr\xE9er un cylindre en argile. Faites rouler l\u2019argile entre vos
       mains pour former un boudin. Puis, aplatissez l\xE9g\xE8rement les extr\xE9mit\xE9s
@@ -2738,7 +2738,7 @@ MonoBehaviour:
     titlesOfSteps: "\xC9tape 1 : Forme de base du c\xE1ntaro"
     audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
     audioTimeoutActivations: 1
-  - objectsOfSteps: {fileID: 919132149155446097, guid: 29b47dd5962014e47915a95e2d75ece0, type: 3}
+  - objectsOfSteps: {fileID: 919132149155446097, guid: 6b7840250ad9747b0acc70680c4dba7f, type: 3}
     textInformation: "Pour faciliter leur travail, les Azt\xE8ques avaient l\u2019habitude
       d\u2019\xE9largir l\xE9g\xE8rement le cylindre afin de former la base du contenant."
     textTutorial: "Pour faciliter la cr\xE9ation de l\u2019espace creux dans le c\xE1ntaro,
@@ -2747,7 +2747,7 @@ MonoBehaviour:
     titlesOfSteps: "\xC9tape 2 : Aplatir le cylindre"
     audioOfSteps: {fileID: 8300000, guid: 1a5e40629c9054e0797a34b475b8365f, type: 3}
     audioTimeoutActivations: 1
-  - objectsOfSteps: {fileID: 919132149155446097, guid: 15603e1de11fd1a46b02516c798f7d75, type: 3}
+  - objectsOfSteps: {fileID: 919132149155446097, guid: bd2a78ac81b854a79a38681c14085914, type: 3}
     textInformation: "Les Azt\xE8ques utilisaient \xE9galement d'autres techniques,
       parfois plus complexes, permettant d\u2019acc\xE9l\xE9rer et de s\xE9curiser
       le fa\xE7onnage. Malheureusement, ces gestes n\xE9cessitent l\u2019apprentissage
@@ -2758,7 +2758,7 @@ MonoBehaviour:
     titlesOfSteps: "\xC9tape 3 : D\xE9but du creux"
     audioOfSteps: {fileID: 8300000, guid: e109b4b73574e4bd3a249d4d9ede6661, type: 3}
     audioTimeoutActivations: 1
-  - objectsOfSteps: {fileID: 919132149155446097, guid: 849476e72b1c40a498c4eeb9b46871bc, type: 3}
+  - objectsOfSteps: {fileID: 919132149155446097, guid: 776042e71316940828249f150f7c2f72, type: 3}
     textInformation: "\xC0 l\u2019\xE9poque, les artisans utilisaient aussi de petits
       outils \u2014 souvent fabriqu\xE9s \xE0 partir de feuilles de ma\xEFs \u2014
       pour lisser les parois de leurs c\xE1ntaros, ce qui am\xE9liorait leur \xE9tanch\xE9it\xE9."
@@ -3474,14 +3474,14 @@ RectTransform:
   m_GameObject: {fileID: 1806225546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.7625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1515281548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -768, y: 345}
+  m_AnchoredPosition: {x: -768, y: 248}
   m_SizeDelta: {x: 322.4, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806225548
