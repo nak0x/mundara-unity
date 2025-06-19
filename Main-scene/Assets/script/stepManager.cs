@@ -244,7 +244,8 @@ public class StepManager : MonoBehaviour, Gestures.ILeapMotionActionInterface
             progressBar.updateState(_currentGameStep);
 
             // Update narrator
-            narateur.say(stepsProps[_currentGameStep].textsOfSteps);
+            narateur.Say(stepsProps[_currentGameStep].textInformation, NarratorSay.INFORMATION);
+            narateur.Say(stepsProps[_currentGameStep].textTutorial, NarratorSay.TUTORIAL);
             
             // Update the title
             titleText.DOText(stepsProps[_currentGameStep].titlesOfSteps, 1.0f);
@@ -319,7 +320,8 @@ public class ScreenPresentation
 public class StepsProperties
 {
     public GameObject objectsOfSteps;
-    public String textsOfSteps;
+    public String textInformation;
+    public String textTutorial;
     public String titlesOfSteps;
     public AudioClip audioOfSteps;
     public float audioTimeoutActivations;

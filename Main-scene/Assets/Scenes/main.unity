@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 824632779}
   - component: {fileID: 824632778}
   m_Layer: 5
-  m_Name: pourquoi ca
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1520,14 +1520,14 @@ RectTransform:
   m_GameObject: {fileID: 1068444562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1591, y: 1.1591, z: 1.1591}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507317556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 740, y: 336}
+  m_AnchoredPosition: {x: 740, y: 386.5}
   m_SizeDelta: {x: 313.6473, y: 313.6473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068444564
@@ -2665,6 +2665,7 @@ RectTransform:
   - {fileID: 863001064}
   - {fileID: 1842318341}
   - {fileID: 824632777}
+  - {fileID: 1803124757}
   m_Father: {fileID: 507317556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2684,8 +2685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6438acd23cc37bd4e9d595d17656bb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  narrateurText: {fileID: 1842318342}
-  narrateurNameText: {fileID: 824632778}
+  informationText: {fileID: 1842318342}
+  tutorialText: {fileID: 1803124758}
+  TitleText: {fileID: 824632778}
   background: {fileID: 1806225547}
   showBackground: 1
 --- !u!1 &1575081270
@@ -2726,27 +2728,45 @@ MonoBehaviour:
   stepPreviewContainer: {fileID: 1350747898}
   stepsProps:
   - objectsOfSteps: {fileID: 919132149155446097, guid: 1b9d80965f76be84a89c723a64595aaf, type: 3}
-    textsOfSteps: En roulant la terre dans vos mains et en vous aidant de la table,
-      realiser un cylindre en terre.
-    titlesOfSteps: 'Etape 1 : Le cylindre, la base de notre pot.'
+    textInformation: "Afin de d\xE9finir la forme initiale de votre c\xE1ntaro, vous
+      devez cr\xE9er un cylindre en argile. Faites rouler l\u2019argile entre vos
+      mains pour former un boudin. Puis, aplatissez l\xE9g\xE8rement les extr\xE9mit\xE9s
+      sur votre plan de travail."
+    textTutorial: "Pour acc\xE9l\xE9rer le processus, les Azt\xE8ques r\xE9alisaient
+      une premi\xE8re \xE9bauche du volume de leur c\xE1ntaro en fa\xE7onnant un
+      cylindre d\u2019argile."
+    titlesOfSteps: "\xC9tape 1 : Forme de base du c\xE1ntaro"
     audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
     audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 29b47dd5962014e47915a95e2d75ece0, type: 3}
-    textsOfSteps: Appuyer avec vos mains sur le millieu du cylindre pour lui donner
-      une forme de 8 applatis sur le haut et le bas.
-    titlesOfSteps: 'Etape 2 : Prise en main'
+    textInformation: "Pour faciliter leur travail, les Azt\xE8ques avaient l\u2019habitude
+      d\u2019\xE9largir l\xE9g\xE8rement le cylindre afin de former la base du contenant."
+    textTutorial: "Pour faciliter la cr\xE9ation de l\u2019espace creux dans le c\xE1ntaro,
+      appuyez doucement sur le dessus du cylindre afin de l\u2019aplatir. Attention
+      \xE0 ne pas trop le d\xE9former : il doit rester cylindrique."
+    titlesOfSteps: "\xC9tape 2 : Aplatir le cylindre"
     audioOfSteps: {fileID: 8300000, guid: 1a5e40629c9054e0797a34b475b8365f, type: 3}
     audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 15603e1de11fd1a46b02516c798f7d75, type: 3}
-    textsOfSteps: Avec vos doigts, appuyer sur le dessus du cylindre afin de creer
-      l'espace pour contenir le liquide
-    titlesOfSteps: 'Etape 3 : L''espace pour le liquide'
+    textInformation: "Les Azt\xE8ques utilisaient \xE9galement d'autres techniques,
+      parfois plus complexes, permettant d\u2019acc\xE9l\xE9rer et de s\xE9curiser
+      le fa\xE7onnage. Malheureusement, ces gestes n\xE9cessitent l\u2019apprentissage
+      aupr\xE8s d\u2019un ma\xEEtre potier."
+    textTutorial: "Pour cr\xE9er un espace \xE0 l\u2019int\xE9rieur du c\xE1ntaro,
+      appuyez doucement au centre avec vos deux pouces. Cela permettra d\u2019enfoncer
+      progressivement l\u2019argile.  "
+    titlesOfSteps: "\xC9tape 3 : D\xE9but du creux"
     audioOfSteps: {fileID: 8300000, guid: e109b4b73574e4bd3a249d4d9ede6661, type: 3}
     audioTimeoutActivations: 1
   - objectsOfSteps: {fileID: 919132149155446097, guid: 849476e72b1c40a498c4eeb9b46871bc, type: 3}
-    textsOfSteps: Deformer en pincant un coter de l'espace pour le liquide afin de
-      faire un bec verseur
-    titlesOfSteps: 'Etape 4 : Le bec verseur'
+    textInformation: "\xC0 l\u2019\xE9poque, les artisans utilisaient aussi de petits
+      outils \u2014 souvent fabriqu\xE9s \xE0 partir de feuilles de ma\xEFs \u2014
+      pour lisser les parois de leurs c\xE1ntaros, ce qui am\xE9liorait leur \xE9tanch\xE9it\xE9."
+    textTutorial: "Pour fa\xE7onner l\u2019int\xE9rieur du c\xE1ntaro, continuez
+      d\u2019appuyer avec vos pouces vers le plan de travail pour approfondir le
+      creux. Ensuite, pincez les bords entre vos pouces et vos index afin d\u2019\xE9galiser
+      les parois."
+    titlesOfSteps: "\xC9tape 4 : Cr\xE9ation du volume complet"
     audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
     audioTimeoutActivations: 1
   StepScreenPresentations:
@@ -3291,6 +3311,142 @@ MonoBehaviour:
   maxSwipeDuration: 1
   pivotGrabRotate: {fileID: 1787825388}
   LeapMotionActionMono: {fileID: 1575081271}
+--- !u!1 &1803124756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1803124757}
+  - component: {fileID: 1803124759}
+  - component: {fileID: 1803124758}
+  m_Layer: 5
+  m_Name: Text Tuto step
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1803124757
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803124756}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1515281548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 736, y: 170}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1803124758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803124756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 2c377538f7d2f437687d736f29341f9d, type: 2}
+  m_sharedMaterial: {fileID: -2604267680050605035, guid: 2c377538f7d2f437687d736f29341f9d, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -54.209595, y: -52.5213, z: -64.14465, w: -74.88135}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1803124759
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803124756}
+  m_CullTransparentMesh: 1
 --- !u!1 &1806225546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,7 +3667,7 @@ GameObject:
   - component: {fileID: 1842318343}
   - component: {fileID: 1842318342}
   m_Layer: 5
-  m_Name: Text - Narrateur
+  m_Name: InformationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

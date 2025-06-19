@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
@@ -6,15 +7,16 @@ using UnityEngine.UI;
 public class Narateur : MonoBehaviour
 {
 
-    public TMP_Text narrateurText;
-    public TMP_Text narrateurNameText;
+    public TMP_Text informationText;
+    public TMP_Text tutorialText;
+    public TMP_Text TitleText;
     public RectTransform background;
     public bool showBackground = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        say("");
+        Say("");
     }
 
     // Update is called once per frame
@@ -23,31 +25,52 @@ public class Narateur : MonoBehaviour
         
     }
 
-    public void clear()
+    public void Clear()
     {
-        narrateurText.text = "";
+        informationText.text = "";
     }
 
-    public void say(string text)
+    public void Say(string text, NarratorSay narratorSay = NarratorSay.BOTH)
     {
-        
+        switch (narratorSay)
+        {
+            case NarratorSay.INFORMATION:
+                SayInformation(text);
+                break;
+            case NarratorSay.TUTORIAL:
+                sayTutorial(text);
+                break;
+            case NarratorSay.BOTH:
+                SayInformation(text);
+                sayTutorial(text);
+                break;
+        }
+    }
+
+    private void SayInformation(string text)
+    {
         // clear background if there is not text
         if(text == "")
         {
             ShowBackground(false);
-            narrateurNameText.DOText("", 1.0f);
+            TitleText.DOText("", 1.0f);
         }
         else
         {
             if (showBackground == true)
             {
-                narrateurNameText.DOText("Pourquoi ca ?", 1.0f);
+                TitleText.DOText("Pourquoi ca ?", 1.0f);
                 ShowBackground(true);
             }
         }
 
         // display text
-        narrateurText.DOText(text, 1f);
+        informationText.DOText(text, 1f);
+    }
+
+    private void sayTutorial(string text)
+    {
+        tutorialText.DOText(text, 1f);
     }
 
     private void ShowBackground(bool show)
@@ -63,4 +86,11 @@ public class Narateur : MonoBehaviour
             background.transform.DOScale(new Vector3(1,0,1), 0.5f);
         }
     }
+}
+
+public enum NarratorSay
+{
+    INFORMATION,
+    TUTORIAL,
+    BOTH
 }
