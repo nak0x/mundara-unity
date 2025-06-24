@@ -210,7 +210,7 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
         if (currentStep == 4 && grabbingAlwaysDetected == false)
         {
             grabbingAlwaysDetected = true;
-            StartCoroutine(NextStepAfterSec(3));
+            StartCoroutine(NextStepAfterSec(5));
         }
     }
 
