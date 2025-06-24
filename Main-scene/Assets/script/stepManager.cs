@@ -230,12 +230,12 @@ public class StepManager : MonoBehaviour, Gestures.ILeapMotionActionInterface
             if (stepsProps[_currentGameStep].objectsOfSteps != null)
             {
                 // Instanciate the gameobject in the working place
-                _currentObject = Instantiate(stepsProps[_currentGameStep].objectsOfSteps, gameObject.transform.position, Quaternion.identity);
+                _currentObject = Instantiate(stepsProps[_currentGameStep].objectsOfSteps, workingPlace.transform);
                 _currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
                 _currentObject.name = "Phantom Pots";
 
                 // Instanciate in the preview
-                GameObject previewPots = Instantiate(stepsProps[_currentGameStep].objectsOfSteps, gameObject.transform.position, Quaternion.identity, stepPreviewContainer.transform);
+                GameObject previewPots = Instantiate(stepsProps[_currentGameStep].objectsOfSteps, stepPreviewContainer.transform);
                 previewPots.name = "Preview Pots";
                 previewPots.transform.localPosition = Vector3.zero;
             }
