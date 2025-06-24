@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 7401664049783789164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,15 +129,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 418746482575951491, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
       propertyPath: m_LocalScale.x
-      value: 17.854605
+      value: 16.24171
       objectReference: {fileID: 0}
     - target: {fileID: 418746482575951491, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.854605
+      value: 16.24171
       objectReference: {fileID: 0}
     - target: {fileID: 418746482575951491, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
       propertyPath: m_LocalScale.z
-      value: 17.854605
+      value: 16.24171
       objectReference: {fileID: 0}
     - target: {fileID: 418746482575951491, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,12 +179,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3168935895618095572, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3168935895618095572, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.23103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3168935895618095572, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.23103
+      objectReference: {fileID: 0}
     - target: {fileID: 4712417199048748447, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
       propertyPath: m_Name
       value: Step_2_Full_animation Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6514694871250209097, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce5c139aad5ed47498cd483000a2a377, type: 3}

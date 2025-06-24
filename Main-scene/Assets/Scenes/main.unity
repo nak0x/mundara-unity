@@ -2738,7 +2738,7 @@ MonoBehaviour:
     titlesOfSteps: "\xC9tape 1 : Forme de base du c\xE1ntaro"
     audioOfSteps: {fileID: 8300000, guid: d3fcdf2f68d6440aa8793402bcf2c516, type: 3}
     audioTimeoutActivations: 1
-  - objectsOfSteps: {fileID: 919132149155446097, guid: 6b7840250ad9747b0acc70680c4dba7f, type: 3}
+  - objectsOfSteps: {fileID: 1954096691198355688, guid: 4ad1f0bb185c84e7b87189fdc92f201a, type: 3}
     textInformation: "Pour faciliter leur travail, les Azt\xE8ques avaient l\u2019habitude
       d\u2019\xE9largir l\xE9g\xE8rement le cylindre afin de former la base du contenant."
     textTutorial: "Pour faciliter la cr\xE9ation de l\u2019espace creux dans le c\xE1ntaro,
@@ -2747,7 +2747,7 @@ MonoBehaviour:
     titlesOfSteps: "\xC9tape 2 : Aplatir le cylindre"
     audioOfSteps: {fileID: 8300000, guid: 1a5e40629c9054e0797a34b475b8365f, type: 3}
     audioTimeoutActivations: 1
-  - objectsOfSteps: {fileID: 919132149155446097, guid: bd2a78ac81b854a79a38681c14085914, type: 3}
+  - objectsOfSteps: {fileID: 1071331191622974357, guid: 9310df84e93304b589a5b6fa053e4539, type: 3}
     textInformation: "Les Azt\xE8ques utilisaient \xE9galement d'autres techniques,
       parfois plus complexes, permettant d\u2019acc\xE9l\xE9rer et de s\xE9curiser
       le fa\xE7onnage. Malheureusement, ces gestes n\xE9cessitent l\u2019apprentissage
@@ -2758,7 +2758,7 @@ MonoBehaviour:
     titlesOfSteps: "\xC9tape 3 : D\xE9but du creux"
     audioOfSteps: {fileID: 8300000, guid: e109b4b73574e4bd3a249d4d9ede6661, type: 3}
     audioTimeoutActivations: 1
-  - objectsOfSteps: {fileID: 919132149155446097, guid: 776042e71316940828249f150f7c2f72, type: 3}
+  - objectsOfSteps: {fileID: 6309469295534482413, guid: 8b0c8ddf2122f423f8c97b02519550b9, type: 3}
     textInformation: "\xC0 l\u2019\xE9poque, les artisans utilisaient aussi de petits
       outils \u2014 souvent fabriqu\xE9s \xE0 partir de feuilles de ma\xEFs \u2014
       pour lisser les parois de leurs c\xE1ntaros, ce qui am\xE9liorait leur \xE9tanch\xE9it\xE9."
