@@ -115,7 +115,7 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
                 Subtitle.DOAnchorPosY(SubtitleData[currentStep].positionY, duration);
                 descriptionText.gameObject.GetComponent<TMP_Text>().DOColor(Color.white, duration);
                 descriptionText.DOAnchorPosY(DescriptionData[currentStep].positionY, duration);
-                descriptionText.gameObject.GetComponent<TMP_Text>().DOText("Ouvrez votre main droite et bougez la devants le capteur", duration);
+                descriptionText.gameObject.GetComponent<TMP_Text>().DOText("Ouvrez votre main droite et bougez la devant le capteur", duration);
                 
                 // play hand
                 reelHands.transform.DOMove(new Vector3(0.00899999961f,0.231999993f,-0.63499999f), duration);
@@ -133,9 +133,9 @@ public class IntroductionManager : MonoBehaviour, Gestures.ILeapMotionActionInte
                 // feedback when the gesture is correcte
                 // tutorial for help guys to swipe
                 // skip when the swipe is detected 2 times
-                descriptionText.gameObject.GetComponent<TMP_Text>().DOText("Voici le geste pour passez les differentes etapes. Essayer de le reproduire.", duration);
+                descriptionText.gameObject.GetComponent<TMP_Text>().DOText("Voici le geste pour passer les différentes étapes. Essayez de le reproduire.", duration);
                 virtualHandsSwipe.SetActive(true);
-                swipeNumberText.gameObject.GetComponent<TMP_Text>().DOText(swipeCountTutorial.ToString() + " / 3 Swipe réussis", duration);
+                swipeNumberText.gameObject.GetComponent<TMP_Text>().DOText(swipeCountTutorial.ToString() + " / 3 swipes réussis", duration);
                 
                 
                 // Skip after 3 skip try
